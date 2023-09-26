@@ -31,11 +31,14 @@
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 </ul>
             </div>
-            <p>&copy; 2016 Touché. All rights reserved. Designed by <a href="http://www.templatewire.com"
-                    rel="nofollow">TemplateWire</a></p>
+            <p>&copy; 2016 Touché. All rights reserved. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+
 <script type="text/javascript" src="<?= base_url('assets/js/jquery.1.11.1.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/SmoothScroll.js') ?>"></script>
@@ -44,6 +47,8 @@
 <script type="text/javascript" src="<?= base_url('assets/js/jqBootstrapValidation.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/contact_me.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/main.js') ?>"></script>
+<script type="text/javascript" src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
+
 
 </body>
 

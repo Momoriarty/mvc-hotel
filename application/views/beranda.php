@@ -31,7 +31,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <?php foreach ($fasilitas as $kategori => $facilities): ?>
+            <?php foreach ($fasilitas as $kategori => $facilities) : ?>
                 <div class="col-xs-12 col-sm-6">
                     <div class="menu-section">
                         <h2 class="menu-section-title">
@@ -39,7 +39,7 @@
                         </h2>
                         <hr>
 
-                        <?php foreach ($facilities as $facility): ?>
+                        <?php foreach ($facilities as $facility) : ?>
                             <div class="menu-item">
                                 <div class="menu-item-name">
                                     <?= $facility['nama_fasilitas']; ?>
@@ -51,8 +51,7 @@
                                     Free
                                 </div>
                                 <div class="menu-item-foto">
-                                    <img src="<?= base_url('assets/admin/img/fasilitas/') . $facility['gambar_fasilitas']; ?>"
-                                        alt="<?= $facility['nama_fasilitas']; ?>">
+                                    <img src="<?= base_url('assets/admin/img/fasilitas/') . $facility['gambar_fasilitas']; ?>" alt="<?= $facility['nama_fasilitas']; ?>">
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -80,11 +79,11 @@
                     <ul class="cat">
                         <li>
                             <ol class="type">
-                                <li><a href="#" data-filter="*" class="active">All</a></li>
-                                <li><a href="#" data-filter=".standard">Standard</a></li>
-                                <li><a href="#" data-filter=".suite">Suite</a></li>
-                                <li><a href="#" data-filter=".family">Family</a></li>
-                                <li><a href="#" data-filter=".superior">Superior</a></li>
+                                <li><a data-filter="*" class="active">All</a></li>
+                                <li><a data-filter=".standard">Standard</a></li>
+                                <li><a data-filter=".suite">Suite</a></li>
+                                <li><a data-filter=".family">Family</a></li>
+                                <li><a data-filter=".superior">Superior</a></li>
                             </ol>
                         </li>
                     </ul>
@@ -94,20 +93,18 @@
             <div class="row">
                 <div class="portfolio-items">
 
-                    <?php foreach ($kamar as $no => $data): ?>
+                    <?php foreach ($kamar as $no => $data) : ?>
 
                         <div class="col-sm-6 col-md-4 col-lg-4 <?= $data['jenis_kamar']; ?>">
                             <div class="portfolio-item">
                                 <div class="hover-bg">
-                                    <a href="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>"
-                                        title="Kamar No. <?= $data['nomor_kamar']; ?>" data-lightbox-gallery="gallery1">
+                                    <a href="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>" title="Kamar No. <?= $data['nomor_kamar']; ?>" data-lightbox-gallery="gallery1">
                                         <div class="hover-text">
                                             <h4>Kamar No.
                                                 <?= $data['nomor_kamar']; ?>
                                             </h4>
                                         </div>
-                                        <img src="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>"
-                                            alt="Project Title">
+                                        <img src="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>" alt="Project Title">
                                     </a>
                                 </div>
                                 <a href="<?= base_url('beranda/detailKamar/' . $data['id']) ?>" class="btn btn-primary" style="margin-top:  10px;">Detail Dan
@@ -186,22 +183,19 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" id="name" class="form-control" placeholder="Name"
-                                    required="required">
+                                <input type="text" id="name" class="form-control" placeholder="Name" required="required">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="email" id="email" class="form-control" placeholder="Email"
-                                    required="required">
+                                <input type="email" id="email" class="form-control" placeholder="Email" required="required">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message"
-                            required></textarea>
+                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div id="success"></div>

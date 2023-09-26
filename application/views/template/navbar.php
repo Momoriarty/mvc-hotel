@@ -24,10 +24,13 @@
   <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/nivo-lightbox/nivo-lightbox.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/nivo-lightbox/default.css') ?>">
 
+
   <!-- Font Google -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,9 +48,7 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-          data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span
-            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a class="navbar-brand page-scroll" href="#page-top">Touché</a>
       </div>
 
@@ -59,6 +60,22 @@
           <li><a href="#portfolio" class="page-scroll">Room</a></li>
           <li><a href="#team" class="page-scroll">Member</a></li>
           <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
+          <?php
+          if (!$this->session->userdata('username')) {
+            redirect('Auth/forbiden');
+          ?>
+            <?php ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Profile</a></li>
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+              </ul>
+            </li>
+          <?php
+          } ?>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -71,9 +88,7 @@
         <div class="container">
           <div class="row">
             <div class="intro-text">
-              <h1>Touché</h1>
-              <p>Restaurant / Coffee / Pub</p>
-              <a href="#about" class="btn btn-custom btn-lg page-scroll">Discover Story</a>
+              <h1>Momo</h1>
             </div>
           </div>
         </div>
