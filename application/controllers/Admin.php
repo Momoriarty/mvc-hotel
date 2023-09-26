@@ -11,7 +11,6 @@ class Admin extends CI_Controller
         $this->load->model('Kamar_model', 'am'); //load model Admin
         // cek login
         // if(!$this->session->userdata('username')) {
-        //     redirect('Auth/forbiden');
         // }
     }
 

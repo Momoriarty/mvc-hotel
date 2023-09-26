@@ -25,14 +25,13 @@
                 </div>
                 <div class="card-footer">
                     <?php
-                    if (!$this->session->userdata('username')) {
-                        redirect('Auth/forbiden');
+                    if ($this->session->userdata('username')) {
                     ?>
-                        <button class="btn btn-primary">Booking</button>
+                        <button class="btn btn-primary">bisa</button>
                     <?php
                     } else {
                     ?>
-                        <a href="<?= base_url('login') ?>" class="btn btn-primary">Booking</a>
+                        <a href="<?= base_url('login') ?>" class="btn btn-primary">gabisa </a>
                     <?php
                     }
                     ?>

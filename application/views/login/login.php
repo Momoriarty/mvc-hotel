@@ -13,12 +13,12 @@
 <body style="display: flex; justify-content:center ; align-items: center;height: 100vh;overflow: hidden;">
     <div class="form-wrap">
         <div class="tabs">
-            <h3 class="signup-tab"><a class="active" href="#signup-tab-content"
+            <h3 class="signup-tab"><a  href="#signup-tab-content"
                     style="border-top-left-radius: 7px;">Sign Up</a></h3>
-            <h3 class="login-tab"><a href="#login-tab-content" style="border-top-right-radius: 7px;">Login</a></h3>
+            <h3 class="login-tab"><a class="active" href="#login-tab-content" style="border-top-right-radius: 7px;">Login</a></h3>
         </div>
         <div class="tabs-content">
-            <div id="signup-tab-content" class="active">
+            <div id="signup-tab-content">
                 <form class="signup-form" action="<?= base_url('login/register') ?>" method="post">
                     <input type="text" class="input" id="user_email" autocomplete="off" name="nama_user"
                         placeholder="Name">
@@ -33,7 +33,7 @@
                     <p><a href="https://www.web-leb.com/">Terms of service</a></p>
                 </div>
             </div>
-            <div id="login-tab-content">
+            <div id="login-tab-content" class="active">
                 <form class="login-form" action="<?= base_url('login/login') ?>" method="post">
                     <input type="text" class="input" id="user_name" autocomplete="off" name="username"
                         placeholder="Username">

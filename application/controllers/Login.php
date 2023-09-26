@@ -51,6 +51,7 @@ class Login extends CI_Controller
                     //  buat session login
                     $data = [
                         'username' => $datauser['username'],
+                        'nama_user' => $datauser['nama_user'],
                         'level' => $datauser['level'],
                     ];
                     $this->session->set_userdata($data);
@@ -69,5 +70,16 @@ class Login extends CI_Controller
             //jika username tidak ada
             echo "Username tidak ada!";
         }
+    }
+
+    public function logout()
+    {
+        //kill session aktif
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('nama_user');
+        $this->session->unset_userdata('level');
+
+        //arahkan kehalaman login
+        redirect('beranda');
     }
 }

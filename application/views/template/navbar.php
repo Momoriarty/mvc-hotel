@@ -48,7 +48,9 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span
+            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a class="navbar-brand page-scroll" href="#page-top">Touché</a>
       </div>
 
@@ -61,21 +63,30 @@
           <li><a href="#team" class="page-scroll">Member</a></li>
           <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
           <?php
-          if (!$this->session->userdata('username')) {
-            redirect('Auth/forbiden');
-          ?>
+          if ($this->session->userdata('username')) {
+            ?>
             <?php ?>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">Profile</a></li>
                 <li><a class="dropdown-item" href="#!">Settings</a></li>
                 <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a class="dropdown-item" href="<?= base_url('login/logout') ?>">Logout</a></li>
               </ul>
             </li>
-          <?php
-          } ?>
+            <?php
+          } else { ?>
+            <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
+          <?php } ?>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="<?= base_url('beranda/#portfolio') ?>">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Library</li>
+            </ol>
+          </nav>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
