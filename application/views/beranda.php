@@ -7,11 +7,12 @@
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="about-text">
-                    <h1>Selamat datang <? ?>
+                    <h1>Selamat datang
+                        <? ?>
                         <?php
                         if ($this->session->userdata('username')) {
                             ?>
-                             <?=  ucwords($_SESSION['nama_user']); ?>!
+                            <?= ucwords($_SESSION['nama_user']); ?>!
                             <?php
                         } else {
                             ?>
@@ -90,17 +91,20 @@
                 <div class="categories">
                     <ul class="cat">
                         <li>
+                            <!-- tipe kamar -->
                             <ol class="type">
-                                <li><a href="" data-filter="*" class="active">All</a></li>
-                                <li><a href="" data-filter=".standard">Standard</a></li>
-                                <li><a href="" data-filter=".suite">Suite</a></li>
-                                <li><a href="" data-filter=".family">Family</a></li>
-                                <li><a href="" data-filter=".superior">Superior</a></li>
+                                <li><button type="button" data-filter="*" class="active">All</button></li>
+                                <li><button type="button" data-filter=".standard">Standard</button></li>
+                                <li><button type="button" data-filter=".suite">Suite</button></li>
+                                <li><button type="button" data-filter=".family">Family</button></li>
+                                <li><button type="button" data-filter=".superior">Superior</button></li>
                             </ol>
+
                         </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
+
             </div>
             <div class="row">
                 <div class="portfolio-items">

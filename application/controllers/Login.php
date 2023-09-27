@@ -52,7 +52,7 @@ class Login extends CI_Controller
                     $data = [
                         'username' => $datauser['username'],
                         'nama_user' => $datauser['nama_user'],
-                        'level' => $datauser['level'],
+                        'level' => $datauser['level']
                     ];
                     $this->session->set_userdata($data);
 
