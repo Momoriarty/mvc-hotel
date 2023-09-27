@@ -37,7 +37,6 @@
     </div>
 </div>
 
-
 <script type="text/javascript" src="<?= base_url('assets/js/jquery.1.11.1.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/bootstrap.js') ?>"></script>
 <script type="text/javascript" src="<?= base_url('assets/js/SmoothScroll.js') ?>"></script>

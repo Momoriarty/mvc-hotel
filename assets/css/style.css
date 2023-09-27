@@ -314,7 +314,7 @@ ol.type li {
 	margin: 0 10px;
 	padding: 20px 0;
 }
-ol.type li a {
+ol.type li button {
 	color: #999;
 	font-weight: 500;
 	font-size: 14px;
@@ -325,11 +325,11 @@ ol.type li a {
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
-ol.type li a.active {
+ol.type li button.active {
 	color: #fff;
 	background-color: #8eb640;
 }
-ol.type li a:hover {
+ol.type li button:hover {
 	color: #fff;
 	background-color: #8eb640;
 }

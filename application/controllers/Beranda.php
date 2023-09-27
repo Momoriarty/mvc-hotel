@@ -37,10 +37,14 @@ class Beranda extends CI_Controller
 
     public function detailKamar($id)
     {
-        $data['kamar']  = $this ->db->get_where('kamar', ['id' => $id])->row_array();
+        $data['kamar'] = $this->db->get_where('kamar', ['id' => $id])->row_array();
+
+        // Membuat variabel is_kamar_active untuk menentukan apakah "Kamar" aktif atau tidak
+        $data['is_kamar_active'] = true;
 
         $this->load->view('template/navbar', $data);
         $this->load->view('Kamar');
         $this->load->view('template/footer');
     }
+
 }

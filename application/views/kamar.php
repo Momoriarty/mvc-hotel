@@ -1,9 +1,5 @@
 <div class="container" style="margin-top: 10px; margin-bottom:10px;">
 
-    <div class="row">
-        <a href="<?= base_url('') ?>" class="btn btn-primary">Kembali</a>
-    </div>
-
     <div class="row" style="margin-top: 10px; margin-bottom:10px;">
         <!-- Kartu Anda di sini -->
         <div class="col-md-4">

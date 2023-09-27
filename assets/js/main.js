@@ -34,7 +34,7 @@ function main() {
     });
 
 	// Hide nav on click
-  $(".navbar-nav li a").click(function (event) {
+  $(".navbar-nav li button").click(function (event) {
     // check if window is small enough so dropdown is created
     var toggle = $(".navbar-toggle").is(":visible");
     if (toggle) {
@@ -53,7 +53,7 @@ function main() {
                 queue: false
             }
         });
-        $('.cat a').click(function() {
+        $('.cat button').click(function() {
             $('.cat .active').removeClass('active');
             $(this).addClass('active');
             var selector = $(this).attr('data-filter');
