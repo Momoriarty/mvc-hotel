@@ -7,11 +7,12 @@
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="about-text">
-                    <h1>Selamat datang <? ?>
+                    <h1>Selamat datang
+                        <? ?>
                         <?php
                         if ($this->session->userdata('username')) {
                             ?>
-                             <?=  ucwords($_SESSION['nama_user']); ?>!
+                            <?= ucwords($_SESSION['nama_user']); ?>!
                             <?php
                         } else {
                             ?>
@@ -91,11 +92,11 @@
                     <ul class="cat">
                         <li>
                             <ol class="type">
-                                <li><a data-filter="*" class="active">All</a></li>
-                                <li><a data-filter=".standard">Standard</a></li>
-                                <li><a data-filter=".suite">Suite</a></li>
-                                <li><a data-filter=".family">Family</a></li>
-                                <li><a data-filter=".superior">Superior</a></li>
+                                <li><a href="#" data-filter="*" class="active">All</a></li>
+                                <li><a href="#" data-filter=".standard">Standard</a></li>
+                                <li><a href="#" data-filter=".suite">Suite</a></li>
+                                <li><a href="#" data-filter=".family">Family</a></li>
+                                <li><a href="#" data-filter=".superior">Superior</a></li>
                             </ol>
                         </li>
                     </ul>
