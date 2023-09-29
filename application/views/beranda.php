@@ -88,52 +88,42 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="categories">
-                    <ul class="cat">
-                        <li>
-                            <!-- tipe kamar -->
-                            <ol class="type">
-                                <li><button type="button" data-filter="*" class="active">All</button></li>
-                                <li><button type="button" data-filter=".standard">Standard</button></li>
-                                <li><button type="button" data-filter=".suite">Suite</button></li>
-                                <li><button type="button" data-filter=".family">Family</button></li>
-                                <li><button type="button" data-filter=".superior">Superior</button></li>
-                            </ol>
+                <?php foreach ($kamar as $jenis_kamar => $rooms): ?>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="menu-section">
+                            <h2 class="menu-section-title">
+                                <?= $jenis_kamar; ?>
+                            </h2>
+                            <hr>
 
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="portfolio-items">
-
-                    <?php foreach ($kamar as $no => $data): ?>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4 <?= $data['jenis_kamar']; ?>">
-                            <div class="portfolio-item">
-                                <div class="hover-bg">
-                                    <a href="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>"
-                                        title="Kamar No. <?= $data['nomor_kamar']; ?>" data-lightbox-gallery="gallery1">
-                                        <div class="hover-text">
-                                            <h4>Kamar No.
-                                                <?= $data['nomor_kamar']; ?>
-                                            </h4>
-                                        </div>
-                                        <img src="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>"
-                                            alt="Project Title">
-                                    </a>
+                            <?php foreach ($rooms as $room): ?>
+                                <div class="menu-item">
+                                    <div class="menu-item-name">
+                                        <?= $room['nomor_kamar']; ?>
+                                    </div>
+                                    <div class="menu-item-price">
+                                        $
+                                        <?= $room['harga_kamar']; ?> / Night
+                                    </div>
+                                    <div class="menu-item-description">
+                                        <?= $room['deskripsi_kamar']; ?>
+                                    </div>
+                                    <div class="menu-item-foto">
+                                        <img src="<?= base_url('assets/admin/img/kamar/') . $room['gambar_kamar']; ?>"
+                                            alt="<?= $room['nomor_kamar']; ?>">
+                                    </div>
+                                    <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>" class="btn btn-primary"
+                                        style="margin-top:  10px;">Detail Dan
+                                        Pesan</a>
                                 </div>
-                                <a href="<?= base_url('beranda/detailKamar/' . $data['id']) ?>" class="btn btn-primary"
-                                    style="margin-top:  10px;">Detail Dan
-                                    Pesan</a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                            <?php endforeach; ?>
 
-                </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
+
         </div>
     </div>
 

@@ -18,8 +18,8 @@ class Beranda extends CI_Controller
 
     public function index()
     {
-        $data['kamar'] = $this->am->getAllKamar();
         $fasilitas = $this->fm->getAllFasilitas(); // Ambil semua fasilitas
+        $kamar = $this->am->getAllKamar(); // Ambil semua fasilitas
 
         // Kelompokkan fasilitas berdasarkan kategori
         $data['fasilitas'] = [];
@@ -28,6 +28,14 @@ class Beranda extends CI_Controller
 
             // Tambahkan fasilitas ke array kategori yang sesuai
             $data['fasilitas'][$kategori][] = $facility;
+        }
+
+        $data['kamar'] = [];
+        foreach ($kamar as $room) {
+            $jenis_kamar = $room['jenis_kamar'];
+
+            // Tambahkan fasilitas ke array kategori yang sesuai
+            $data['kamar'][$jenis_kamar][] = $room;
         }
 
         $this->load->view('template/navbar', $data);
@@ -41,7 +49,6 @@ class Beranda extends CI_Controller
 
         // Membuat variabel is_kamar_active untuk menentukan apakah "Kamar" aktif atau tidak
         $data['is_kamar_active'] = true;
-
         $this->load->view('template/navbar', $data);
         $this->load->view('Kamar');
         $this->load->view('template/footer');
