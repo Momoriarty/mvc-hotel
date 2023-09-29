@@ -6,6 +6,8 @@
         border-radius: 10px;
         background-color: #f9f9f9;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     /* Gaya untuk slider gambar */
@@ -70,12 +72,15 @@
             <!-- Slider Gambar Kamar -->
             <div id="imageSlider" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
+                    <!-- Add your carousel indicators here if you have more than one image -->
+                    <!-- For now, let's assume you have only one image -->
                     <li data-target="#imageSlider" data-slide-to="0" class="active"></li>
                 </ol>
                 <div class="carousel-inner">
+                    <!-- Replace this with your dynamic image -->
                     <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1694406805270-f3a93e91f4b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1960&q=80"
-                            class="d-block w-100" alt="Kamar 1">
+                        <img src="<?= base_url('assets/admin/img/kamar/' . $kamar['gambar_kamar']); ?>"
+                            class="d-block w-100" alt="<?= $kamar['nomor_kamar']; ?>">
                     </div>
                 </div>
             </div>
@@ -83,17 +88,30 @@
         <div class="col-md-6">
             <!-- Deskripsi Kamar -->
             <div class="room-details">
-                <h1 class="judul-kamar">Nama Kamar</h1>
-                <p>Deskripsi kamar Anda dapat ditulis di sini. Ini adalah tempat yang nyaman untuk beristirahat.</p>
+                <!-- Replace the static text with dynamic data -->
+                <h1 class="judul-kamar">Kamar No.
+                    <?= $kamar['nomor_kamar']; ?>
+                </h1>
+                <p>Kamar
+                    <?= $kamar['jenis_kamar']; ?>
+                </p>
+                <p>
+                    <?= $kamar['deskripsi_kamar']; ?>
+                </p>
                 <h2 class="fasilitas-kamar">Fasilitas Kamar</h2>
                 <ul>
+                    <!-- Add dynamic list items based on your data -->
+                    <!-- Example using static text, replace it with dynamic data -->
                     <li>Wi-Fi</li>
                     <li>TV Layar Datar</li>
                     <li>AC</li>
                     <li>Mini Bar</li>
                     <li>Kamar Mandi Pribadi</li>
                 </ul>
-                <h3 class="harga-kamar">Harga Per Malam: $100</h3>
+                <!-- Replace the static price with dynamic price -->
+                <h3 class="harga-kamar">Harga Kamar:
+                    <?= $kamar['harga_kamar']; ?>
+                </h3>
                 <button class="btn btn-pesan">Pesan Sekarang</button>
             </div>
         </div>

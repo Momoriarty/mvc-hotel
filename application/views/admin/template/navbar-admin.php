@@ -126,6 +126,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Pemesanan
                         </a>
+                        <a class="nav-link" href="<?= base_url('user') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Data User
+                        </a>
                         <hr>
                         <!-- Penutup bagian 1 -->
 

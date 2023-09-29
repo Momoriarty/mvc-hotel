@@ -55,42 +55,78 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#about" class="page-scroll">About</a></li>
-          <li><a href="#restaurant-menu" class="page-scroll">Facility</a></li>
-          <li><a href="#portfolio" class="page-scroll">Room</a></li>
-          <li><a href="#team" class="page-scroll">Member</a></li>
-          <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
-          <?php
-          if ($this->session->userdata('username')) {
-            ?>
-            <?php ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Profile</a></li>
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                <li><a class="dropdown-item" href="<?= base_url('login/logout') ?>">Logout</a></li>
-              </ul>
-            </li>
+        <?php if (isset($is_kamar_active) && $is_kamar_active) { ?>
+          <!-- UNTUK HALAMAN DETAIL KAMAR -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?= base_url('beranda') ?>" class="page-scroll">Beranda</a></li>
             <?php
-          } else { ?>
-            <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
-          <?php } ?>
+            if ($this->session->userdata('username')) {
+              ?>
+              <?php ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#!">Profile</a></li>
+                  <li><a class="dropdown-item" href="#!">Settings</a></li>
+                  <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                  <li><a class="dropdown-item" href="<?= base_url('login/logout') ?>">Logout</a></li>
+                </ul>
+              </li>
+              <?php
+            } else { ?>
+              <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
+            <?php } ?>
 
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>">
-              <a href="<?= base_url('beranda/#portfolio') ?>">Home</a>
-            </li>
-            <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>"
-              aria-current="page">
-              Kamar
-            </li>
-          </ol>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>">
+                <a href="<?= base_url('beranda/#portfolio') ?>">Home</a>
+              </li>
+              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>"
+                aria-current="page">
+                Kamar
+              </li>
+            </ol>
+          </ul>
+        <?php } else { ?>
+          <!-- UNTUK HALAMAN BERANDA -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#about" class="page-scroll">About</a></li>
+            <li><a href="#restaurant-menu" class="page-scroll">Facility</a></li>
+            <li><a href="#portfolio" class="page-scroll">Room</a></li>
+            <li><a href="#team" class="page-scroll">Member</a></li>
+            <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
+            <?php
+            if ($this->session->userdata('username')) {
+              ?>
+              <?php ?>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#!">Profile</a></li>
+                  <li><a class="dropdown-item" href="#!">Settings</a></li>
+                  <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                  <li><a class="dropdown-item" href="<?= base_url('login/logout') ?>">Logout</a></li>
+                </ul>
+              </li>
+              <?php
+            } else { ?>
+              <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
+            <?php } ?>
 
-        </ul>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>">
+                <a href="<?= base_url('beranda/#portfolio') ?>">Home</a>
+              </li>
+              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>"
+                aria-current="page">
+                Kamar
+              </li>
+            </ol>
+          </ul>
+        <?php } ?>
+
       </div>
       <!-- /.navbar-collapse -->
     </div>
