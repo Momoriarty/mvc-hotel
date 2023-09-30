@@ -12,19 +12,20 @@ class Kamar_model extends CI_Model
 	public function simpanKamar()
 	{
 		// New fields
-		$nomor_kamar = $this->input->post('nomor_kamar');
+		$jumlah_kamar = $this->input->post('jumlah_kamar');
 		$jenis_kamar = $this->input->post('jenis_kamar');
 		$deskripsi_kamar = $this->input->post('deskripsi_kamar');
 		$harga_kamar = $this->input->post('harga_kamar');
 
 		$config['allowed_types'] = 'jpg|png|jpeg|pdf|rar|webp';
+		$config['allowed_types'] = 'jpg|png|jpeg|pdf|rar|webp';
 		$config['upload_path'] = './assets/admin/img/kamar';
 		$config['max_size'] = '2048';
 
-		// load library
+		// Memuat library
 		$this->load->library('upload', $config);
 
-		//upload
+		// Upload file
 		$this->upload->initialize($config);
 
 		if (!$this->upload->do_upload('gambar_kamar')) {
@@ -33,12 +34,26 @@ class Kamar_model extends CI_Model
 		} else {
 			$upload = $this->upload->data();
 
-			// ambil data nama gambar
-			$gambar_kamar = $upload['file_name'];
+			// Membuat nama file baru berdasarkan timestamp
+			$nama_unik = 'img-kamar-' . time(); // Contoh: img-kamar-timestamp
+
+			// Mengambil ekstensi file dari nama file asli
+			$ekstensi_file = pathinfo($upload['file_name'], PATHINFO_EXTENSION);
+
+			// Membuat nama file baru dengan ekstensi asli
+			$nama_file_baru = $nama_unik . '.' . $ekstensi_file;
+
+			// Mengganti nama file yang diunggah dengan nama unik
+			rename($config['upload_path'] . '/' . $upload['file_name'], $config['upload_path'] . '/' . $nama_file_baru);
+
+			// Sekarang, variabel $gambar_kamar berisi nama file unik yang dapat Anda gunakan dalam aplikasi Anda.
+
+			$gambar_kamar = $nama_file_baru;
+
 
 			// satukan semua kedalam array data
 			$data = [
-				'nomor_kamar' => $nomor_kamar,
+				'jumlah_kamar' => $jumlah_kamar,
 				'jenis_kamar' => $jenis_kamar,
 				'deskripsi_kamar' => $deskripsi_kamar,
 				'harga_kamar' => $harga_kamar,
@@ -50,6 +65,7 @@ class Kamar_model extends CI_Model
 			$this->db->insert('kamar', $data);
 		}
 	}
+
 
 	public function editKamar()
 	{
@@ -64,7 +80,7 @@ class Kamar_model extends CI_Model
 
 		// Memanggil model untuk melakukan update data
 		$this->db->where('id', $id);
-        $this->db->update('kamar', $data);
+		$this->db->update('kamar', $data);
 	}
 
 

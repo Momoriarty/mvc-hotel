@@ -99,7 +99,7 @@
                             <?php foreach ($rooms as $room): ?>
                                 <div class="menu-item">
                                     <div class="menu-item-name">
-                                        <?= $room['nomor_kamar']; ?>
+                                        <?= $room['jenis_kamar']; ?>
                                     </div>
                                     <div class="menu-item-price">
                                         $
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="menu-item-foto">
                                         <img src="<?= base_url('assets/admin/img/kamar/') . $room['gambar_kamar']; ?>"
-                                            alt="<?= $room['nomor_kamar']; ?>">
+                                            alt="<?= $room['jenis_kamar']; ?>">
                                     </div>
                                     <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>" class="btn btn-primary"
                                         style="margin-top:  10px;">Detail Dan

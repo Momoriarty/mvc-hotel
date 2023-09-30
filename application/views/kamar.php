@@ -80,7 +80,7 @@
                     <!-- Replace this with your dynamic image -->
                     <div class="carousel-item active">
                         <img src="<?= base_url('assets/admin/img/kamar/' . $kamar['gambar_kamar']); ?>"
-                            class="d-block w-100" alt="<?= $kamar['nomor_kamar']; ?>">
+                            class="d-block w-100" alt="<?= $kamar['jenis_kamar']; ?>">
                     </div>
                 </div>
             </div>
@@ -89,12 +89,9 @@
             <!-- Deskripsi Kamar -->
             <div class="room-details">
                 <!-- Replace the static text with dynamic data -->
-                <h1 class="judul-kamar">Kamar No.
-                    <?= $kamar['nomor_kamar']; ?>
-                </h1>
-                <p>Kamar
+                <h1 class="judul-kamar">Kamar
                     <?= $kamar['jenis_kamar']; ?>
-                </p>
+                </h1>
                 <p>
                     <?= $kamar['deskripsi_kamar']; ?>
                 </p>

@@ -1,6 +1,6 @@
 
 
-<button type="button" class="btn btn-primary mx-auto mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Tambah Daftar Fasilitas
 </button>
 

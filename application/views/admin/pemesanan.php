@@ -1,6 +1,6 @@
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mx-auto mt-5" data-bs-toggle="modal"
+<button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal"
     data-bs-target="#tambahPemesananModal">
     Tambah Pemesanan
 </button>

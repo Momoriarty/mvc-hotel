@@ -107,14 +107,14 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <br>
-                        <a class="nav-link" href="<?= base_url('admin') ?>">
+                        <a class="nav-link" href="<?= base_url('dashboard') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Home
                         </a>
                         <hr>
                         <!-- Bagian 1 -->
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="<?= base_url('admin') ?>">
+                        <a class="nav-link" href="<?= base_url('kamar') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Kamar
                         </a>
@@ -180,4 +180,4 @@
     </div>
     <div id="layoutSidenav_content">
 
-        <div class="container">
+        <div class="container mt-5">

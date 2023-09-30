@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Kamar extends CI_Controller
 {
 
     public function __construct()
@@ -50,7 +50,7 @@ class Admin extends CI_Controller
         );
 
         // Arahkan ke halaman..
-        redirect('admin/index');
+        redirect('kamar/index');
     }
 
 
@@ -82,7 +82,7 @@ class Admin extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('admin/index');
+        redirect('kamar/index');
     }
 
 
@@ -112,7 +112,7 @@ class Admin extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('admin/index');
+        redirect('kamar/index');
     }
 
 
