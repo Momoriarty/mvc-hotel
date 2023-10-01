@@ -11,30 +11,41 @@ class Pemesanan_model extends CI_Model
 	public function simpanPemesanan()
 	{
 		// New fields for reservation
-		$nama_tamu = $this->input->post('nama_tamu');
+		$id_pemesanan = date('YmdHis') . rand(1000, 9999);
+		$nama = $this->input->post('nama');
+		$email = $this->input->post('email');
+		$no_hp = $this->input->post('no_hp');
 		$tanggal_check_in = $this->input->post('tanggal_check_in');
 		$durasi_pemesanan = $this->input->post('durasi_pemesanan');
 		$tanggal_check_out = $this->input->post('tanggal_check_out');
-		$tipe_kamar = $this->input->post('tipe_kamar');
-		$jumlah_orang = $this->input->post('jumlah_orang');
+		$jenis_kamar = $this->input->post('jenis_kamar');
+		$jumlah_kamar = $this->input->post('jumlah_kamar');
 		$harga_kamar = $this->input->post('harga_kamar');
+
+		$total = $harga_kamar * $durasi_pemesanan * $jumlah_kamar;
+
+		// Generate a unique ID for the reservation
 
 		// Add your validation and logic here (e.g., checking room availability, calculating total price, etc.)
 
 		// Create an array to store reservation data
 		$data = [
-			'nama_tamu' => $nama_tamu,
+			'id_pemesanan' => $id_pemesanan,
+			'nama' => $nama,
+			'email' => $email,
+			'no_hp' => $no_hp,
 			'tanggal_check_in' => $tanggal_check_in,
 			'durasi_pemesanan' => $durasi_pemesanan,
 			'tanggal_check_out' => $tanggal_check_out,
-			'tipe_kamar' => $tipe_kamar,
-			'jumlah_orang' => $jumlah_orang,
-			'harga_kamar' => $harga_kamar,
+			'jenis_kamar' => $jenis_kamar,
+			'jumlah_kamar' => $jumlah_kamar,
+			'total' => $total,
 		];
 
 		// Execute the query to insert data into the "pemesanan_kamar" table
 		$this->db->insert('pemesanan', $data);
 	}
+
 
 	public function editPemesanan()
 	{
@@ -51,7 +62,7 @@ class Pemesanan_model extends CI_Model
 			'harga_kamar' => $this->input->post('harga_kamar'),
 		];
 
-		
+
 
 		// Memanggil model untuk melakukan update data pemesanan
 		$this->db->where('id_pemesanan', $id);

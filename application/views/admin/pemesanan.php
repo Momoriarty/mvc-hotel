@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         Nama Tamu:
-                        <?= $data['nama_tamu']; ?>
+                        <?= $data['nama']; ?>
                     </h5>
                     <p class="card-text">
                         Tanggal Check-in:
@@ -26,15 +26,15 @@
                     </p>
                     <p class="card-text">
                         Tipe Kamar:
-                        <?= $data['tipe_kamar']; ?>
+                        <?= $data['jenis_kamar']; ?>
                     </p>
                     <p class="card-text">
                         Jumlah Orang:
-                        <?= $data['jumlah_orang']; ?>
+                        <?= $data['jumlah_kamar']; ?>
                     </p>
                     <p class="card-text">
                         Harga Kamar:
-                        <?= $data['harga_kamar']; ?>
+                        <?= $data['total']; ?>
                     </p>
                 </div>
                 <div class="card-footer">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Anda yakin ingin menghapus pemesanan oleh:
-                            <?= $data['nama_tamu']; ?>?
+                            <?= $data['nama']; ?>?
                         </p>
                     </div>
                     <div class="modal-footer">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="nama_tamu" class="form-label">Nama Tamu</label>
-                                <input type="text" name="nama_tamu" class="form-control" value="<?= $data['nama_tamu']; ?>"
+                                <input type="text" name="nama_tamu" class="form-control" value="<?= $data['nama']; ?>"
                                     required>
                             </div>
                             <div class="mb-3">
@@ -109,17 +109,17 @@
                             <div class="mb-3">
                                 <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
                                 <input type="text" name="tipe_kamar" class="form-control"
-                                    value="<?= $data['tipe_kamar']; ?>" required>
+                                    value="<?= $data['jenis_kamar']; ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                                <input type="number" name="jumlah_orang" class="form-control"
-                                    value="<?= $data['jumlah_orang']; ?>" required>
+                                <input type="number" name="jumlah_kamar" class="form-control"
+                                    value="<?= $data['jumlah_kamar']; ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                                <input type="text" name="harga_kamar" class="form-control"
-                                    value="<?= $data['harga_kamar']; ?>" required>
+                                <input type="text" name="total" class="form-control"
+                                    value="<?= $data['total']; ?>" required>
                             </div>
                             <!-- Add more fields as needed -->
 

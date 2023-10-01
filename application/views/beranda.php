@@ -8,7 +8,6 @@
             <div class="col-xs-12 col-md-6">
                 <div class="about-text">
                     <h1>Selamat datang
-                        <? ?>
                         <?php
                         if ($this->session->userdata('username')) {
                             ?>

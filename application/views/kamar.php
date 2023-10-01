@@ -1,15 +1,4 @@
 <style>
-    /* Gaya untuk container utama */
-    .container-box {
-        border: 1px solid #ddd;
-        padding: 30px;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
     /* Gaya untuk slider gambar */
     .carousel-inner {
         border-radius: 10px;
@@ -65,8 +54,7 @@
         background-color: #0056b3;
     }
 </style>
-
-<div class="container mt-5 container-box">
+<div class="container" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-6">
             <!-- Slider Gambar Kamar -->
@@ -89,13 +77,13 @@
             <!-- Deskripsi Kamar -->
             <div class="room-details">
                 <!-- Replace the static text with dynamic data -->
-                <h1 class="judul-kamar">Kamar
+                <h1 class="judul-kamar">
                     <?= $kamar['jenis_kamar']; ?>
                 </h1>
                 <p>
                     <?= $kamar['deskripsi_kamar']; ?>
                 </p>
-                <h2 class="fasilitas-kamar">Fasilitas Kamar</h2>
+                <h2>Fasilitas Kamar</h2>
                 <ul>
                     <!-- Add dynamic list items based on your data -->
                     <!-- Example using static text, replace it with dynamic data -->
@@ -109,8 +97,132 @@
                 <h3 class="harga-kamar">Harga Kamar:
                     <?= $kamar['harga_kamar']; ?>
                 </h3>
-                <button class="btn btn-pesan">Pesan Sekarang</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Bagian Pemesanan -->
+<div class="container" style="margin-top:20px; margin-bottom:20px;">
+    <div class="row">
+        <!-- Form Pemesanan Kamar -->
+        <form action="<?= base_url('beranda/pemesanankamar'); ?>" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nama Lengkap:</label>
+                        <input type="text" class="form-control" name="nama" id="nama"
+                            value="<?= $_SESSION['nama_user']; ?>" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Alamat Email:</label>
+                        <input type="email" class="form-control" name="email" id="email"
+                            value="<?= $_SESSION['email']; ?>" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="no_hp" class="form-label">Nomor Telepon:</label>
+                        <input type="tel" class="form-control" name="no_hp" id="no_hp"
+                            value="<?= $_SESSION['no_hp']; ?>" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="jumlah" class="form-label">Jenis Kamar:</label>
+                        <input type="text" class="form-control" name="jenis_kamar" value="<?= $kamar['jenis_kamar']; ?>"
+                            id="" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="mb-3">
+                        <label for="jumlah" class="form-label">Jumlah Kamar:</label>
+                        <select name="jumlah_kamar" class="form-control">
+                            <option value="">Pilih Jumlah Kamar</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="check-in" class="form-label">Check-in Date:</label>
+                        <input type="date" class="form-control" name="tanggal_check_in" id="check-in" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="duration" class="form-label">Duration (Malam):</label>
+                        <select name="durasi_pemesanan" id="duration" class="form-control">
+                            <option value="">Pilih Berapa Malam</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="check-out" class="form-label">Check-out Date:</label>
+                        <input type="date" class="form-control" name="tanggal_check_out" id="check-out" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" name="harga_kamar" value="<?= $kamar['harga_kamar']; ?>" readonly>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:20px;">Pesan Sekarang</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Mengambil elemen input date
+    var checkInInput = document.getElementById("check-in");
+
+    // Mendapatkan tanggal hari ini dalam format YYYY-MM-DD
+    var today = new Date().toISOString().split("T")[0];
+
+    // Mengatur tanggal minimum pada input date
+    checkInInput.min = today;
+</script>
+
+<script>
+    var checkInInput = document.getElementById("check-in");
+    var durationSelect = document.getElementById("duration");
+    var checkOutInput = document.getElementById("check-out");
+
+    checkInInput.addEventListener("change", function () {
+        var checkInDate = new Date(checkInInput.value);
+        var duration = parseInt(durationSelect.value);
+
+        if (!isNaN(duration) && duration > 0) {
+            checkInDate.setDate(checkInDate.getDate() + duration);
+            var checkOutDate = checkInDate.toISOString().split("T")[0];
+            checkOutInput.value = checkOutDate;
+        } else {
+            checkOutInput.value = "";
+        }
+    });
+
+    durationSelect.addEventListener("change", function () {
+        var checkInDate = new Date(checkInInput.value);
+        var duration = parseInt(durationSelect.value);
+
+        if (!isNaN(duration) && duration > 0) {
+            checkInDate.setDate(checkInDate.getDate() + duration);
+            var checkOutDate = checkInDate.toISOString().split("T")[0];
+            checkOutInput.value = checkOutDate;
+        } else {
+            checkOutInput.value = "";
+        }
+    });
+</script>

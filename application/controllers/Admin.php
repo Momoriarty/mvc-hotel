@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class Admin extends CI_Controller
 {
 
     public function __construct()
@@ -10,8 +10,8 @@ class Dashboard extends CI_Controller
         // Your own constructor code
         $this->load->model('Kamar_model', 'am'); //load model Admin
         // cek login
-        // if(!$this->session->userdata('username')) {
-        // }
+        if (!$this->session->userdata('username')) {
+        }
     }
 
     public function index()

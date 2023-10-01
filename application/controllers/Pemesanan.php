@@ -23,34 +23,7 @@ class Pemesanan extends CI_Controller
         $this->load->view('admin/template/footer-admin');
     }
 
-    public function tambahPemesanan()
-    {
-        // Check if the data was successfully added
-        if ($this->pm->simpanPemesanan()) {
-            $pesan = 'Gagal menyimpan data pemesanan.';
-            $kelas = 'danger';
-        } else {
-            $pesan = 'Data pemesanan berhasil disimpan.';
-            $kelas = 'success';
-        }
 
-        // Set pesan flash sesuai dengan hasil operasi
-        $this->session->set_flashdata(
-            'admin_message',
-            '<div class="alert alert-dismissible fade show custom-alert alert-' . $kelas . ' mt-3" role="alert">
-            <div class="d-flex align-items-center">
-                <div class="alert-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <strong>' . ucfirst($kelas) . '! &nbsp; </strong>' . $pesan . '
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>'
-        );
-
-        // Redirect ke halaman pemesanan (sesuai dengan nama kontroller dan metodenya)
-        redirect('pemesanan/index');
-    }
 
     public function updatePemesanan($id)
     {
