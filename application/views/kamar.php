@@ -95,7 +95,7 @@
                 </ul>
                 <!-- Replace the static price with dynamic price -->
                 <h3 class="harga-kamar">Harga Kamar:
-                    <?= $kamar['harga_kamar']; ?>
+                    <?= $kamar['harga_kamar']; ?> / Malam
                 </h3>
             </div>
         </div>

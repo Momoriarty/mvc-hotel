@@ -89,4 +89,10 @@ class Beranda extends CI_Controller
         redirect('beranda');
     }
 
+    public function profile() {
+        $this->load->view('template/navbar');
+        $this->load->view('profile');
+        $this->load->view('template/footer');
+    }
+
 }
