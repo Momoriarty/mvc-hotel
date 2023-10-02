@@ -11,6 +11,7 @@ class Beranda extends CI_Controller
         $this->load->model('Kamar_model', 'am'); //load model Admin
         $this->load->model('Fasilitas_model', 'fm'); //load model Admin
         $this->load->model('Pemesanan_model', 'pm'); //load model Admin
+        $this->load->model('Login_model', 'lm'); //load model Admin
         // cek login
         // if (!$this->session->userdata('username')) {
         //     redirect('login');
@@ -90,7 +91,10 @@ class Beranda extends CI_Controller
     }
 
     public function profile() {
-        $this->load->view('template/navbar');
+
+        $data['user'] = $this->lm->getAllUser();
+
+        $this->load->view('template/navbar', $data);
         $this->load->view('profile');
         $this->load->view('template/footer');
     }

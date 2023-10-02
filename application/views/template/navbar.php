@@ -76,16 +76,6 @@
             } else { ?>
               <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
             <?php } ?>
-
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>">
-                <a href="<?= base_url('beranda/#portfolio') ?>">Home</a>
-              </li>
-              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>"
-                aria-current="page">
-                Kamar
-              </li>
-            </ol>
           </ul>
         <?php } else { ?>
           <!-- UNTUK HALAMAN BERANDA -->
@@ -113,15 +103,7 @@
               <li><a href="<?= base_url('login') ?>" class="page-scroll">Login</a></li>
             <?php } ?>
 
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>">
-                <a href="<?= base_url('beranda/#portfolio') ?>">Home</a>
-              </li>
-              <li class="breadcrumb-item <?= (isset($is_kamar_active) && $is_kamar_active) ? 'active' : '' ?>"
-                aria-current="page">
-                Kamar
-              </li>
-            </ol>
+
           </ul>
         <?php } ?>
 

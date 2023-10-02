@@ -50,6 +50,7 @@ class Login extends CI_Controller
 
                     //  buat session login
                     $data = [
+                        'id' => $datauser['id'],
                         'username' => $datauser['username'],
                         'nama_user' => $datauser['nama_user'],
                         'email' => $datauser['email'],
