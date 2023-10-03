@@ -51,10 +51,11 @@ class Login extends CI_Controller
                     //  buat session login
                     $data = [
                         'id' => $datauser['id'],
-                        'username' => $datauser['username'],
                         'nama_user' => $datauser['nama_user'],
                         'email' => $datauser['email'],
                         'no_hp' => $datauser['no_hp'],
+                        'username' => $datauser['username'],
+                        'password' => $datauser['password'],
                         'level' => $datauser['level']
                     ];
                     $this->session->set_userdata($data);

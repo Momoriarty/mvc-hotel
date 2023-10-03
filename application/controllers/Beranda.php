@@ -90,13 +90,21 @@ class Beranda extends CI_Controller
         redirect('beranda');
     }
 
-    public function profile() {
+    public function profile()
+    {
+        
 
-        $data['user'] = $this->lm->getAllUser();
+        $data['user'] = $this->db->get('akun')->row_array(); 
 
         $this->load->view('template/navbar', $data);
         $this->load->view('profile');
         $this->load->view('template/footer');
     }
+
+    public function editNama()
+    {
+        $this->lm->editProfile();
+    }
+
 
 }
