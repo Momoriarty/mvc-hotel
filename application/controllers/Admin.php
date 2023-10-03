@@ -21,6 +21,25 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['kamar'] = $this->am->getAllKamar();
+        $data['fasilitas'] = $this->fm->getAllFasilitas();
+        $data['pemesanan'] = $this->pm->getAllPemesanan();
+        $data['user'] = $this->lm->getAllUser();
+
+        // Hitung jumlah baris dari masing-masing tabel
+        $data['total_kamar'] = count($data['kamar']);
+        $data['total_user'] = count($data['user']);
+        $data['total_pemesanan'] = count($data['pemesanan']);
+
+        $data['total_terkonfirmasi'] = 0;
+        $data['total_pending'] = 0;
+
+        foreach ($data['pemesanan'] as $pemesanan) {
+            if ($pemesanan['status'] == 'confirm') {
+                $data['total_terkonfirmasi']++;
+            } elseif ($pemesanan['status'] == 'pending') {
+                $data['total_pending']++;
+            }
+        }
 
         $this->load->view('admin/template/navbar-admin', $data);
         $this->load->view('admin/dashboard');

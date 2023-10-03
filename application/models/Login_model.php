@@ -28,9 +28,8 @@ class Login_model extends CI_Model
         $this->db->insert('akun', $data);
     }
 
-    public function editProfile()
+    public function editProfile($id)
     {
-        $id = $this->input->post('id');
 
         // Mengambil data kamar berdasarkan ID
         $data = [
@@ -43,7 +42,7 @@ class Login_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('akun', $data);
 
-        redirect('beranda/profile');
+        redirect('beranda/profile/' . $id);
 
     }
 }

@@ -60,12 +60,15 @@ class Beranda extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function kuitansi()
+    public function kuitansi($id)
     {
+        $data['kuitansi'] = $this->db->get_where('pemesanan', ['id_pemesanan' => $id])->row_array();
+
         $data['is_kamar_active'] = true;
         $this->load->view('template/navbar', $data);
         $this->load->view('kuitansi');
-        $this->load->view('template/footer');    }
+        $this->load->view('template/footer');
+    }
 
     public function pemesananKamar()
     {
@@ -81,18 +84,19 @@ class Beranda extends CI_Controller
 
 
         // Arahkan ke halaman..
-        redirect('beranda/kuitansi');
     }
 
-    public function profile()
+    public function profile($id)
     {
+        $data['user'] = $this->db->get_where('akun', ['id' => $id])->row_array();
 
-        $data['user'] = $this->db->get('akun')->row_array();
+        // Kemudian, lanjutkan dengan meload tampilan
         $data['is_kamar_active'] = true;
         $this->load->view('template/navbar', $data);
         $this->load->view('profile');
         $this->load->view('template/footer');
     }
+
 
     public function editNama($id)
     {

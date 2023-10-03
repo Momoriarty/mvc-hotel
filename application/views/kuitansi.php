@@ -1,53 +1,91 @@
-<style>
-    h1 {
-        text-align: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    .receipt {
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuitansi Pemesanan Anda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    .info {
-        margin: 10px 0;
-    }
+        .container-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    .info label {
-        font-weight: bold;
-    }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
 
-    .info p {
-        margin: 0;
-    }
-</style>
+        .receipt {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
 
-<div class="container">
-    <h1>Kuitansi Pemesanan Anda</h1>
-    <div class="receipt">
-        <div class="info">
-            <label>Nama:</label>
-            <p>Nama Pengguna</p>
-        </div>
-        <div class="info">
-            <label>Email:</label>
-            <p>email@example.com</p>
-        </div>
-        <div class="info">
-            <label>Tanggal Check-in:</label>
-            <p>01 Januari 2024</p>
-        </div>
-        <div class="info">
-            <label>Durasi Menginap (malam):</label>
-            <p>3 malam</p>
-        </div>
-        <div class="info">
-            <label>Tipe Kamar:</label>
-            <p>Deluxe</p>
-        </div>
-        <div class="info">
-            <label>Total Pembayaran:</label>
-            <p>Rp 2.500.000</p>
+        .info {
+            margin-bottom: 10px;
+        }
+
+        .info label {
+            font-weight: bold;
+            width: 150px;
+            display: inline-block;
+        }
+
+        .info p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-box">
+        <h1>Kuitansi Pemesanan Anda</h1>
+        <div class="receipt">
+            <div class="info">
+                <label>Nama:</label>
+                <p><?= $kuitansi['id_pemesanan'] ?></p>
+            </div>
+            <div class="info">
+                <label>Nama:</label>
+                <p><?= $kuitansi['nama'] ?></p>
+            </div>
+            <div class="info">
+                <label>Email:</label>
+                <p><?= $kuitansi['email'] ?></p>
+            </div>
+            <div class="info">
+                <label>Tanggal Check-in:</label>
+                <p><?= $kuitansi['tanggal_check_in'] ?></p>
+            </div>
+            <div class="info">
+                <label>Durasi Menginap (malam):</label>
+                <p><?= $kuitansi['durasi_pemesanan'] ?></p>
+            </div><br>
+            <div class="info">
+                <label>Tanggal Check-in:</label>
+                <p><?= $kuitansi['tanggal_check_out'] ?></p>
+            </div>
+            <div class="info">
+                <label>Tipe Kamar:</label>
+                <p><?= $kuitansi['jenis_kamar'] ?></p>
+            </div>
+            <div class="info">
+                <label>Total Pembayaran:</label>
+                <p><?= $kuitansi['total'] ?></p>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+</html>

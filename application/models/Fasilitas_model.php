@@ -51,9 +51,8 @@ class Fasilitas_model extends CI_Model
         }
     }
 
-    public function editFasilitas()
+    public function editFasilitas($id)
     {
-        $id = $this->input->post('id');
 
         // Retrieve data from the form
         $data = [
