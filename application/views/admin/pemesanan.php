@@ -1,7 +1,5 @@
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal"
-    data-bs-target="#tambahPemesananModal">
+<button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#tambahPemesananModal">
     Tambah Pemesanan
 </button>
 
@@ -35,6 +33,10 @@
                     <p class="card-text">
                         Harga Kamar:
                         <?= $data['total']; ?>
+                    </p>
+                    <p class="card-text">
+                        Status :
+                        <?= $data['status']; ?>
                     </p>
                 </div>
                 <div class="card-footer">
@@ -86,40 +88,12 @@
                                 <input type="hidden" name="id_pemesanan" class="form-control" id="" placeholder=""
                                     value="<?= $data['id_pemesanan']; ?>" readonly>
                             </div>
-                            <div class="mb-3">
-                                <label for="nama_tamu" class="form-label">Nama Tamu</label>
-                                <input type="text" name="nama_tamu" class="form-control" value="<?= $data['nama']; ?>"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal_check_in" class="form-label">Tanggal Check-in</label>
-                                <input type="date" name="tanggal_check_in" class="form-control"
-                                    value="<?= $data['tanggal_check_in']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="durasi_pemesanan" class="form-label">Durasi Pemesanan</label>
-                                <input type="text" name="durasi_pemesanan" class="form-control"
-                                    value="<?= $data['durasi_pemesanan']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tanggal_check_out" class="form-label">Tanggal Check-out</label>
-                                <input type="date" name="tanggal_check_out" class="form-control"
-                                    value="<?= $data['tanggal_check_out']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
-                                <input type="text" name="tipe_kamar" class="form-control"
-                                    value="<?= $data['jenis_kamar']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                                <input type="number" name="jumlah_kamar" class="form-control"
-                                    value="<?= $data['jumlah_kamar']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                                <input type="text" name="total" class="form-control"
-                                    value="<?= $data['total']; ?>" required>
+                            <div class="mb3">
+                                <label for="" class="form-label">Status</label>
+                                <select name="status" id="" class="form-control">
+                                    <option value="pending">Pending</option>
+                                    <option value="confirm">Sukses</option>
+                                </select>
                             </div>
                             <!-- Add more fields as needed -->
 

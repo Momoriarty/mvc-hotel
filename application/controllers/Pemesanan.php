@@ -14,14 +14,6 @@ class Pemesanan extends CI_Controller
         // }
     }
 
-    public function index()
-    {
-        $data['pemesanan'] = $this->pm->getAllPemesanan();
-
-        $this->load->view('admin/template/navbar-admin', $data);
-        $this->load->view('admin/pemesanan');
-        $this->load->view('admin/template/footer-admin');
-    }
 
 
 

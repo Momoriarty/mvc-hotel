@@ -14,14 +14,6 @@ class Kamar extends CI_Controller
         // }
     }
 
-    public function index()
-    {
-        $data['kamar'] = $this->am->getAllKamar();
-
-        $this->load->view('admin/template/navbar-admin', $data);
-        $this->load->view('admin/kamar');
-        $this->load->view('admin/template/footer-admin');
-    }
 
     public function tambahKamar()
     {

@@ -60,6 +60,13 @@ class Beranda extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function kuitansi()
+    {
+        $data['is_kamar_active'] = true;
+        $this->load->view('template/navbar', $data);
+        $this->load->view('kuitansi');
+        $this->load->view('template/footer');    }
+
     public function pemesananKamar()
     {
 
@@ -72,39 +79,34 @@ class Beranda extends CI_Controller
             $kelas = 'success';
         }
 
-        // Set pesan flash sesuai dengan hasil operasi
-        $this->session->set_flashdata(
-            'admin_message',
-            '<div class="alert alert-dismissible fade show custom-alert alert-' . $kelas . ' mt-3" role="alert">
-            <div class="d-flex align-items-center">
-                <div class="alert-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <strong>' . ucfirst($kelas) . '! &nbsp; </strong>' . $pesan . '
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>'
-        );
 
         // Arahkan ke halaman..
-        redirect('beranda');
+        redirect('beranda/kuitansi');
     }
 
     public function profile()
     {
-        
 
-        $data['user'] = $this->db->get('akun')->row_array(); 
-
+        $data['user'] = $this->db->get('akun')->row_array();
+        $data['is_kamar_active'] = true;
         $this->load->view('template/navbar', $data);
         $this->load->view('profile');
         $this->load->view('template/footer');
     }
 
-    public function editNama()
+    public function editNama($id)
     {
-        $this->lm->editProfile();
+        $this->lm->editProfile($id);
     }
 
+    public function pemesanan()
+    {
+
+        $data['pemesanan'] = $this->db->get('pemesanan')->result_array();
+        $data['is_kamar_active'] = true;
+        $this->load->view('template/navbar', $data);
+        $this->load->view('pemesanan');
+        $this->load->view('template/footer');
+    }
 
 }

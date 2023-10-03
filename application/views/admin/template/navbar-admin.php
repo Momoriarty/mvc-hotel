@@ -114,19 +114,19 @@
                         <hr>
                         <!-- Bagian 1 -->
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="<?= base_url('kamar') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/kamar') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Kamar
                         </a>
-                        <a class="nav-link" href="<?= base_url('fasilitas') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/fasilitas') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Fasilitas
                         </a>
-                        <a class="nav-link" href="<?= base_url('pemesanan') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/pemesanan') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Pemesanan
                         </a>
-                        <a class="nav-link" href="<?= base_url('user') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/user') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data User
                         </a>
@@ -162,7 +162,7 @@
                         </div>
                         <hr>
                         <!-- Penutup bagian 2 -->
-                        <a class="nav-link" href="<?= base_url('pemesanan') ?>">
+                        <a class="nav-link" href="<?= base_url('login/logout') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-ads"></i></div>
                             Logout
                         </a>

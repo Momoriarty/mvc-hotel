@@ -11,15 +11,6 @@ class Fasilitas extends CI_Controller
         // You can add login checking here if needed
     }
 
-    public function index()
-    {
-        $data['fasilitas'] = $this->fm->getAllFasilitas(); // Change to your model function name
-
-        $this->load->view('admin/template/navbar-admin', $data);
-        $this->load->view('admin/fasilitas', $data); // Pass $data to the view
-        $this->load->view('admin/template/footer-admin');
-    }
-
     public function tambahFasilitas()
     {
         // Panggil metode untuk menyimpan fasilitas baru

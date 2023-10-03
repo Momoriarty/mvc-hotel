@@ -38,6 +38,7 @@ class Login_model extends CI_Model
             'username' => $this->input->post('username')
         ];
 
+        
         // Memanggil model untuk melakukan update data
         $this->db->where('id', $id);
         $this->db->update('akun', $data);

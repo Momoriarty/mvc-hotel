@@ -53,13 +53,7 @@ class Pemesanan_model extends CI_Model
 
 		// Mengambil data pemesanan berdasarkan ID
 		$data = [
-			'nama_tamu' => $this->input->post('nama_tamu'),
-			'tanggal_check_in' => $this->input->post('tanggal_check_in'),
-			'durasi_pemesanan' => $this->input->post('durasi_pemesanan'),
-			'tanggal_check_out' => $this->input->post('tanggal_check_out'),
-			'tipe_kamar' => $this->input->post('tipe_kamar'),
-			'jumlah_orang' => $this->input->post('jumlah_orang'),
-			'harga_kamar' => $this->input->post('harga_kamar'),
+			'status' => $this->input->post('status')
 		];
 
 

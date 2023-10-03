@@ -66,7 +66,7 @@
                                 width="150">
                             <div class="mt-3">
                                 <h4>
-                                    <?= ucwords($_SESSION['nama_user']); ?>
+                                    <?= ucwords($user['nama_user']); ?>
                                 </h4>
                             </div>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
@@ -83,7 +83,9 @@
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= $user['nama_user']; ?>
+                                <h5>
+                                    <?= $user['nama_user']; ?>
+                                </h5>
                             </div>
                         </div>
                         <hr>
@@ -92,7 +94,9 @@
                                 <h6 class="mb-0">Username</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= isset($_SESSION['username']) ? ucwords($_SESSION['username']) : 'Username Tidak Tersedia' ?>
+                                <h5>
+                                    <?= $user['username']; ?>
+                                </h5>
                             </div>
                         </div>
                         <hr>
@@ -101,7 +105,9 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= isset($_SESSION['email']) ? ucwords($_SESSION['email']) : 'Email Tidak Tersedia' ?>
+                                <h5>
+                                    <?= $user['email']; ?>
+                                </h5>
                             </div>
                         </div>
                         <hr>
@@ -110,7 +116,9 @@
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <?= isset($_SESSION['no_hp']) ? ucwords($_SESSION['no_hp']) : 'Nomor HP Tidak Tersedia' ?>
+                                <h5>
+                                    <?= $user['no_hp']; ?>
+                                </h5>
                             </div>
                         </div>
                         <hr>
@@ -131,21 +139,20 @@
             </div>
             <div class="modal-body">
                 <!-- Tambahkan form untuk mengedit profil di sini -->
-                <form action="<?= base_url('beranda/editnama') ?>" method="post">
+                <form action="<?= base_url('beranda/editnama/') . $user['id']; ?>" method="post">
                     <!-- Contoh input untuk mengedit nama -->
                     <div class="form-group">
-                        <input type="hidden" class="form-control" name="id" id=""
-                            value="<?= ucwords($_SESSION['id']); ?>">
+                        <input type="hidden" class="form-control" name="id" value="<?= $user['id']; ?>" id="">
                     </div>
                     <div class="form-group">
                         <label for="">Full Name</label>
                         <input type="text" class="form-control" name="nama_user" id=""
-                            value="<?= ucwords($_SESSION['nama_user']); ?>">
+                            value="<?= $user['nama_user']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="">Username</label>
                         <input type="text" class="form-control" name="username" id=""
-                            value="<?= ucwords($_SESSION['username']); ?>">
+                            value="<?= $user['username']; ?>">
                     </div>
                     <!-- Tambahkan input lainnya sesuai kebutuhan -->
                     <div class="modal-footer">
