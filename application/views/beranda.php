@@ -110,7 +110,7 @@
                                             <p>
                                                 <?= $room['deskripsi_kamar']; ?>
                                             </p>
-                                            <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>">Join now</a>
+                                            <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>">Detail Dan Pesan</a>
                                         </div>
                                         <div class="visual">
                                             <img src="<?= base_url('assets/admin/img/kamar/') . $room['gambar_kamar']; ?>"

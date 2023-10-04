@@ -8,14 +8,7 @@ class Pemesanan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pemesanan_model', 'pm'); // Load model Pemesanan
-        // Cek login (sesuaikan dengan sistem autentikasi Anda)
-        // if (!$this->session->userdata('username')) {
-        //     redirect('Auth/forbidden');
-        // }
     }
-
-
-
 
     public function updatePemesanan($id)
     {

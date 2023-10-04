@@ -18,7 +18,7 @@ class Login extends CI_Controller
 
     public function register()
     {
-        $this->lm->register();
+        $this->lm->registerakun();
 
         // Set pesan sukses untuk ditampilkan kepada pengguna
         $this->session->set_flashdata(
@@ -29,7 +29,6 @@ class Login extends CI_Controller
         </div>'
         );
 
-        redirect('login');
     }
 
     public function login()

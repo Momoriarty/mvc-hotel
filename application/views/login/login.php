@@ -168,9 +168,69 @@
         margin-top: -20px;
         text-align: right;
     }
+
+    /* styles.css */
+
+    .custom-alert {
+        background: linear-gradient(135deg, #3cd8b7, #2980b9);
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        /* Sesuaikan lebar sesuai kebutuhan */
+        text-align: center;
+        /* Tengahkan teks pesan */
+        z-index: 1000;
+        /* Tetapkan z-index yang tinggi */
+        animation: fadeOut 0.5s ease;
+        /* Animasi perubahan opacity saat elemen dihapus */
+    }
+
+    .custom-alert.hide {
+        animation: fadeOut 0.5s ease;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+
+    .custom-alert .text-success {
+        font-weight: bold;
+    }
+
+    .custom-alert.show {
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+            /* Animasi sedikit dari atas ke bawah */
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 </style>
 
 <body>
+    <?= $this->session->flashdata('admin_message') ?>
+
     <div class="form">
         <ul class="tab-group">
             <li class="tab"><a href="#signup" style="border-radius: 15px!important;margin-right:8x;">Sign Up</a>
@@ -179,6 +239,7 @@
             </li>
         </ul>
         <div class="tab-content">
+
             <div id="login">
                 <h1>Welcome Back!</h1>
                 <form action="<?= base_url('login/login') ?>" method="post">
@@ -217,6 +278,26 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Ambil elemen pesan flash
+        var alertElement = document.querySelector('.custom-alert');
+
+        // Tentukan waktu dalam milidetik sebelum pesan flash akan dihilangkan (misalnya, 5000ms atau 5 detik)
+        var delay = 5000; // Anda dapat mengganti nilai ini sesuai kebutuhan
+
+        // Setelah jangka waktu tertentu, sembunyikan pesan flash dengan animasi
+        setTimeout(function () {
+            if (alertElement) {
+                alertElement.style.transition = 'opacity 1s ease';
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 1000); // Waktu tambahan untuk menghapus elemen setelah animasi selesai
+            }
+        }, delay);
+
+    </script>
+
     <script>$('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
             var $this = $(this),
