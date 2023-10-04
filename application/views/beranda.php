@@ -85,36 +85,43 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed.</p>
             </div>
         </div>
+        <!-- css -->
+        <link rel="stylesheet" href="<?= base_url('assets/css/responsivecard.css') ?>">
+
         <div class="container">
             <div class="row">
                 <?php foreach ($kamar as $jenis_kamar => $rooms): ?>
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-12">
                         <div class="menu-section">
                             <h2 class="menu-section-title">
                                 <?= $jenis_kamar; ?>
                             </h2>
                             <hr>
-
                             <?php foreach ($rooms as $room): ?>
-                                <div class="menu-item">
-                                    <div class="menu-item-name">
-                                        <?= $room['jenis_kamar']; ?>
-                                    </div>
-                                    <div class="menu-item-price">
-                                        $
-                                        <?= $room['harga_kamar']; ?> / Night
-                                    </div>
-                                    <div class="menu-item-description">
-                                        <?= $room['deskripsi_kamar']; ?>
-                                    </div>
-                                    <div class="menu-item-foto">
-                                        <img src="<?= base_url('assets/admin/img/kamar/') . $room['gambar_kamar']; ?>"
-                                            alt="<?= $room['jenis_kamar']; ?>">
-                                    </div>
-                                    <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>" class="btn btn-primary"
-                                        style="margin-top:  10px;">Detail Dan
-                                        Pesan</a>
-                                </div>
+                                <article>
+                                    <section class="card">
+                                        <div class="text-content">
+                                            <h3>
+                                                <?= $room['jenis_kamar']; ?>
+                                            </h3>
+                                            <h3> $
+                                                <?= $room['harga_kamar']; ?> / Night
+                                            </h3>
+                                            <p>
+                                                <?= $room['deskripsi_kamar']; ?>
+                                            </p>
+                                            <a href="<?= base_url('beranda/detailKamar/' . $room['id']) ?>">Join now</a>
+                                        </div>
+                                        <div class="visual">
+                                            <img src="<?= base_url('assets/admin/img/kamar/') . $room['gambar_kamar']; ?>"
+                                                alt="" />
+                                        </div>
+                                    </section>
+                                </article>
+
+
+
+
                             <?php endforeach; ?>
 
                         </div>
