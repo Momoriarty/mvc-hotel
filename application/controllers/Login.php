@@ -36,8 +36,20 @@ class Login extends CI_Controller
         $user = $this->input->post('username', true);
         $pass = $this->input->post('password', true);
 
-        //lakukan pengecekan username 
-        $datauser = $this->db->get_where('akun', ['username' => $user])->row_array();
+        if ($user == '') {
+            $user = $this->input->post('email', true);
+        } else {
+            $user = $this->input->post('username', true);
+        }
+
+        if ($user == '') {
+            $datauser = $this->db->get_where('akun', ['email' => $user])->row_array();
+        } else {
+            $datauser = $this->db->get_where('akun', ['username' => $user])->row_array();
+        }
+
+        var_dump($user, $datauser['email']);
+        die;
 
         //jika username ada
         if ($datauser) {
@@ -46,24 +58,35 @@ class Login extends CI_Controller
                 // cek password
                 if (password_verify($pass, $datauser['password'])) {
                     // jika password sesuai
-
-                    //  buat session login
-                    $data = [
-                        'id' => $datauser['id'],
-                        'nama_user' => $datauser['nama_user'],
-                        'email' => $datauser['email'],
-                        'no_hp' => $datauser['no_hp'],
-                        'username' => $datauser['username'],
-                        'password' => $datauser['password'],
-                        'level' => $datauser['level']
-                    ];
-                    $this->session->set_userdata($data);
-
-                    // arahkan ke controlller admin
-                    redirect('beranda');
+                    // periksa level pengguna
+                    if ($datauser['level'] == 'admin') {
+                        $data = [
+                            'id' => $datauser['id'],
+                            'nama_user' => $datauser['nama_user'],
+                            'email' => $datauser['email'],
+                            'no_hp' => $datauser['no_hp'],
+                            'username' => $datauser['username'],
+                            'password' => $datauser['password'],
+                            'level' => $datauser['level']
+                        ];
+                        $this->session->set_userdata($data);
+                        redirect('admin');
+                    } else {
+                        $data = [
+                            'id' => $datauser['id'],
+                            'nama_user' => $datauser['nama_user'],
+                            'email' => $datauser['email'],
+                            'no_hp' => $datauser['no_hp'],
+                            'username' => $datauser['username'],
+                            'password' => $datauser['password'],
+                            'level' => $datauser['level']
+                        ];
+                        $this->session->set_userdata($data);
+                        redirect('beranda');
+                    }
                 } else {
                     // jika password salah
-                    echo "Password mu Salah!";
+                    echo "Passwordmu Salah!";
                 }
             } else {
                 //jika user tidak aktif
@@ -78,50 +101,6 @@ class Login extends CI_Controller
     public function admin_login()
     {
         $this->load->view('Admin/Login');
-    }
-
-    public function a_login()
-    {
-        $user = $this->input->post('username', true);
-        $pass = $this->input->post('password', true);
-
-        //lakukan pengecekan username 
-        $datauser = $this->db->get_where('akun', ['username' => $user])->row_array();
-
-        //jika username ada
-        if ($datauser) {
-            //cek user aktif
-            if ($datauser['is_active'] == 1 and $datauser['level'] == 'admin') {
-                // cek password
-                if (password_verify($pass, $datauser['password'])) {
-                    // jika password sesuai
-
-                    //  buat session login
-                    $data = [
-                        'id' => $datauser['id'],
-                        'nama_user' => $datauser['nama_user'],
-                        'email' => $datauser['email'],
-                        'no_hp' => $datauser['no_hp'],
-                        'username' => $datauser['username'],
-                        'password' => $datauser['password'],
-                        'level' => $datauser['level']
-                    ];
-                    $this->session->set_userdata($data);
-
-                    // arahkan ke controlller admin
-                    redirect('admin');
-                } else {
-                    // jika password salah
-                    echo "Password mu Salah!";
-                }
-            } else {
-                //jika user tidak aktif
-                echo "User tidak aktif!";
-            }
-        } else {
-            //jika username tidak ada
-            echo "Username tidak ada!";
-        }
     }
 
     public function logout()

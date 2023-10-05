@@ -62,6 +62,7 @@ class Login_model extends CI_Model
         } else {
             $data = [
                 'nama_user' => $this->input->post('nama_user'),
+                'level' => 'user',
                 'username' => $user,
                 'email' => $email,
                 'no_hp' => $no_hp,
@@ -96,7 +97,8 @@ class Login_model extends CI_Model
         // Mengambil data kamar berdasarkan ID
         $data = [
             'nama_user' => $this->input->post('nama_user'),
-            'username' => $this->input->post('username')
+            'username' => $this->input->post('username'),
+            'level' => $this->input->post('level')
         ];
 
 
