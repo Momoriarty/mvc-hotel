@@ -33,53 +33,45 @@ class Login extends CI_Controller
 
     public function login()
     {
-        $user = $this->input->post('username', true);
+        $username = $this->input->post('username', true);
+        $user = $this->db->get_where('akun', ['username' => $username])->row_array();
+
+        if (!$user) {
+            // Jika tidak ada pengguna dengan 'username', coba mencari berdasarkan 'email'
+            $user = $this->db->get_where('akun', ['email' => $username])->row_array();
+        }
+
         $pass = $this->input->post('password', true);
 
-        if ($user == '') {
-            $user = $this->input->post('email', true);
-        } else {
-            $user = $this->input->post('username', true);
-        }
-
-        if ($user == '') {
-            $datauser = $this->db->get_where('akun', ['email' => $user])->row_array();
-        } else {
-            $datauser = $this->db->get_where('akun', ['username' => $user])->row_array();
-        }
-
-        var_dump($user, $datauser['email']);
-        die;
-
         //jika username ada
-        if ($datauser) {
+        if ($user) {
             //cek user aktif
-            if ($datauser['is_active'] == 1) {
+            if ($user['is_active'] == 1) {
                 // cek password
-                if (password_verify($pass, $datauser['password'])) {
+                if (password_verify($pass, $user['password'])) {
                     // jika password sesuai
                     // periksa level pengguna
-                    if ($datauser['level'] == 'admin') {
+                    if ($user['level'] == 'admin') {
                         $data = [
-                            'id' => $datauser['id'],
-                            'nama_user' => $datauser['nama_user'],
-                            'email' => $datauser['email'],
-                            'no_hp' => $datauser['no_hp'],
-                            'username' => $datauser['username'],
-                            'password' => $datauser['password'],
-                            'level' => $datauser['level']
+                            'id' => $user['id'],
+                            'nama_user' => $user['nama_user'],
+                            'email' => $user['email'],
+                            'no_hp' => $user['no_hp'],
+                            'username' => $user['username'],
+                            'password' => $user['password'],
+                            'level' => $user['level']
                         ];
                         $this->session->set_userdata($data);
                         redirect('admin');
                     } else {
                         $data = [
-                            'id' => $datauser['id'],
-                            'nama_user' => $datauser['nama_user'],
-                            'email' => $datauser['email'],
-                            'no_hp' => $datauser['no_hp'],
-                            'username' => $datauser['username'],
-                            'password' => $datauser['password'],
-                            'level' => $datauser['level']
+                            'id' => $user['id'],
+                            'nama_user' => $user['nama_user'],
+                            'email' => $user['email'],
+                            'no_hp' => $user['no_hp'],
+                            'username' => $user['username'],
+                            'password' => $user['password'],
+                            'level' => $user['level']
                         ];
                         $this->session->set_userdata($data);
                         redirect('beranda');
