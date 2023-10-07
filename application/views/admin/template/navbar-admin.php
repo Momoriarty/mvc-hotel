@@ -67,6 +67,16 @@
             transform: translateY(0);
         }
     }
+
+    :root {
+        --background-gradient: linear-gradient(178deg, #ffff33 10%, #3333ff);
+        --gray: #34495e;
+        --darkgray: #2c3e50;
+    }
+
+    body {
+        background: var(--background-gradient);
+    }
 </style>
 
 <body class="sb-nav-fixed">
@@ -122,56 +132,19 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Fasilitas
                         </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        <a class="nav-link" href="<?= base_url('admin/pemesanan') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data Pemesanan
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordionPages">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="login.html">Login</a>
-                                <a class="nav-link" href="register.html">Register</a>
-                                <a class="nav-link" href="password.html">Forgot Password</a>
-                            </nav>
-                        </div>
                         <a class="nav-link" href="<?= base_url('admin/user') ?>">
-                        <i class="fas fa-tachometer-alt"></i>  <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data User
                         </a>
                         <hr>
                         <!-- Penutup bagian 1 -->
 
-                        <!-- Bagian 2 -->
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-                        <hr>
                         <!-- Penutup bagian 2 -->
-                        <a class="nav-link" href="<?= base_url('login/logout') ?>">
+                        <a class="nav-link" href="<?= base_url('login/logout/') . $_SESSION['id'] ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-ads"></i></div>
                             Logout
                         </a>

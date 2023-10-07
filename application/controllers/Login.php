@@ -98,8 +98,10 @@ class Login extends CI_Controller
     public function logout()
     {
         //kill session aktif
+        $this->session->unset_userdata('id');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('nama_user');
+        $this->session->unset_userdata('no_hp');
         $this->session->unset_userdata('level');
 
         //arahkan kehalaman login

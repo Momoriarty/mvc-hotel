@@ -1,13 +1,83 @@
+<STyle>
+    select {
+        /* Reset Select */
+        appearance: none;
+        outline: 10px red;
+        border: 0;
+        box-shadow: none;
+        /* Personalize */
+        flex: 1;
+        padding: 0 1em;
+        color: #fff;
+        background-color: var(--darkgray);
+        background-image: none;
+        cursor: pointer;
+    }
+
+    /* Remove IE arrow */
+    select::-ms-expand {
+        display: none;
+    }
+
+    /* Custom Select wrapper */
+    .select {
+        position: relative;
+        display: flex;
+        width: 20em;
+        height: 3em;
+        border-radius: .25em;
+        overflow: hidden;
+    }
+
+    /* Arrow */
+    .select::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        background-color: #34495e;
+        transition: .25s all ease;
+        pointer-events: none;
+    }
+
+    /* Transition */
+    .select:hover::after {
+        color: #f39c12;
+    }
+</STyle>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#tambahPemesananModal">
     Tambah Pemesanan
 </button>
 
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <label for="">Fitur</label>
+        <div class="select">
+            <select id="status-filter">
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="sukses">Sukses</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Kolom Pencarian -->
+    <div class="col-md-3 mb-3">
+        <label for="search-input">Cari Nama Tamu</label>
+        <input type="text" id="search-input" class="select" placeholder="Cari nama tamu">
+    </div>
+</div>
+
+
 <?= $this->session->flashdata('admin_message') ?>
 
 <div class="row">
     <?php foreach ($pemesanan as $no => $data): ?>
-        <div class="col-md-3">
+        <div class="col-md-3 reservation-card <?= $data['status']; ?>">
             <div class="card mx-auto mt-3">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -160,3 +230,56 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Secara awal, tampilkan semua kartu reservasi
+        $('.reservation-card').show();
+
+        // Dengarkan perubahan di dropdown filter status
+        $('#status-filter').on('change', function () {
+            var selectedStatus = $(this).val();
+
+            // Sembunyikan semua kartu awalnya
+            $('.reservation-card').hide();
+
+            if (selectedStatus === 'all') {
+                // Jika 'Semua' dipilih, tampilkan semua kartu
+                $('.reservation-card').show();
+            } else {
+                // Selain itu, tampilkan kartu dengan status yang dipilih
+                $('.' + selectedStatus).show();
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Secara awal, tampilkan semua kartu reservasi
+        $('.reservation-card').show();
+
+        // Tambahkan event listener untuk input pencarian
+        $('#search-input').on('input', function () {
+            var searchText = $(this).val().toLowerCase();
+
+            // Sembunyikan semua kartu awalnya
+            $('.reservation-card').hide();
+
+            if (searchText.length === 0) {
+                // Jika kolom pencarian kosong, tampilkan semua kartu
+                $('.reservation-card').show();
+            } else {
+                // Selain itu, tampilkan kartu yang cocok dengan teks pencarian
+                $('.reservation-card').each(function () {
+                    var cardText = $(this).text().toLowerCase();
+                    if (cardText.indexOf(searchText) !== -1) {
+                        $(this).show();
+                    }
+                });
+            }
+        });
+    });
+</script>

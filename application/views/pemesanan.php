@@ -1,3 +1,91 @@
+<style>
+    /* CSS untuk Container */
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* CSS untuk Judul Pesanan Anda */
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: #333;
+        /* Warna teks judul */
+    }
+
+    /* CSS untuk Tabel */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        /* Bayangan tabel */
+        background-color: #fff;
+        /* Warna latar belakang tabel */
+    }
+
+    th,
+    td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        /* Garis bawah setiap baris */
+    }
+
+    th {
+        background-color: #f5f5f5;
+        /* Warna latar belakang header kolom */
+        font-weight: bold;
+        color: #333;
+        /* Warna teks header kolom */
+        text-transform: uppercase;
+    }
+
+    /* CSS untuk Tabel Hover */
+    tbody tr:hover {
+        background-color: #f0f0f0;
+        /* Warna latar belakang saat dihover */
+    }
+
+    /* CSS untuk Teks Strong */
+    strong {
+        font-weight: bold;
+        color: #555;
+        /* Warna teks yang lebih gelap */
+    }
+
+    /* CSS untuk Table Responsif */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    /* CSS untuk Nama Kolom di Baris Pertama */
+    thead th {
+        background-color: #333;
+        /* Warna latar belakang header kolom */
+        color: #fff;
+        /* Warna teks header kolom */
+    }
+
+    /* CSS untuk Responsif pada Layar Kecil */
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        .container {
+            padding: 10px;
+        }
+    }
+</style>
+
 <div class="container">
     <h1>Pesanan Anda</h1>
     <div class="table-responsive">
