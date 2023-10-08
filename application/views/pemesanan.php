@@ -101,6 +101,7 @@
                     <th><strong>Tanggal Check-out</strong></th>
                     <th><strong>Total</strong></th>
                     <th><strong>Status</strong></th>
+                    <th><strong>Detail</strong></th>
                 </tr>
             </thead>
             <tbody>
@@ -148,8 +149,16 @@
                             </td>
                             <td>
                                 <strong>
-                                    <?= $p['status'] ?>
+                                    <?php if ($p['status_bayar'] == '1') { ?>
+                                        <p>Sukses</p>
+                                    <?php } else { ?>
+                                        <p>Pending</p>
+                                    <?php } ?>
                                 </strong>
+                            </td>
+                            <td>
+                                <a href="<?= base_url('beranda/kuitansi/') . $p['id_pemesanan'] ?>"
+                                    class="btn btn-primary">Cek</a>
                             </td>
                             <!-- Sisipkan kolom-kolom lainnya sesuai kebutuhan -->
                         </tr>

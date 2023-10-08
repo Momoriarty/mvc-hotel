@@ -140,6 +140,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Data User
                         </a>
+                        <a class="nav-link" href="<?= base_url('admin/transaksi') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Data Transaksi
+                        </a>
                         <hr>
                         <!-- Penutup bagian 1 -->
 

@@ -38,7 +38,7 @@ class Pemesanan extends CI_Controller
         );
 
         // Redirect ke halaman pemesanan (sesuai dengan nama kontroller dan metodenya)
-        redirect('pemesanan/index');
+        redirect('admin/pemesanan');
     }
 
     public function deletePemesanan($id)
@@ -66,6 +66,6 @@ class Pemesanan extends CI_Controller
         );
 
         // Redirect ke halaman pemesanan (sesuai dengan nama kontroller dan metodenya)
-        redirect('pemesanan/index');
+        redirect('admin/pemesanan');
     }
 }

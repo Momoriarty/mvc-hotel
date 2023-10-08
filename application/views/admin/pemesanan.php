@@ -1,4 +1,4 @@
-<STyle>
+<style>
     select {
         /* Reset Select */
         appearance: none;
@@ -45,29 +45,35 @@
     .select:hover::after {
         color: #f39c12;
     }
-</STyle>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#tambahPemesananModal">
-    Tambah Pemesanan
-</button>
+</style>
 
 <div class="row">
 
     <div class="col-md-3 mb-3">
-        <label for="">Fitur</label>
+        <label for="">Status Pembayaran</label>
         <div class="select">
-            <select id="status-filter">
+            <select id="status-pembayaran-input" name="status-pembayaran-input">
                 <option value="all">All</option>
-                <option value="pending">Pending</option>
-                <option value="sukses">Sukses</option>
+                <option value="0">Pending</option>
+                <option value="1">Sukses</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <label for="">Status Kamar</label>
+        <div class="select">
+            <select id="status-kamar-input" name="status-kamar-input">
+                <option value="all">All</option>
+                <option value="1">Selesai</option>
+                <option value="0">Digunakan</option>
             </select>
         </div>
     </div>
 
     <!-- Kolom Pencarian -->
     <div class="col-md-3 mb-3">
-        <label for="search-input">Cari Nama Tamu</label>
+        <label for="search-input">Cari Ap aja</label>
         <input type="text" id="search-input" class="select" placeholder="Cari nama tamu">
     </div>
 </div>
@@ -77,7 +83,8 @@
 
 <div class="row">
     <?php foreach ($pemesanan as $no => $data): ?>
-        <div class="col-md-3 reservation-card <?= $data['status']; ?>">
+        <div class="col-md-3 reservation-card" data-status-pembayaran="<?= $data['status_bayar']; ?>"
+            data-status-kamar="<?= $data['status_kamar']; ?>">
             <div class="card mx-auto mt-3">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -101,12 +108,24 @@
                         <?= $data['jumlah_kamar']; ?>
                     </p>
                     <p class="card-text">
-                        Harga Kamar:
+                        Total Bayar:
                         <?= $data['total']; ?>
                     </p>
                     <p class="card-text">
-                        Status :
-                        <?= $data['status']; ?>
+                        Status Pembayaran :
+                        <?php if ($data['status_bayar'] == '1') { ?>
+                            Sukses
+                        <?php } else { ?>
+                            Pending
+                        <?php } ?>
+                    </p>
+                    <p class="card-text">
+                        Status Kamar :
+                        <?php if ($data['status_kamar'] == '0') { ?>
+                            Digunakan
+                        <?php } else { ?>
+                            Selesai
+                        <?php } ?>
                     </p>
                 </div>
                 <div class="card-footer">
@@ -155,14 +174,16 @@
                         <form action="<?= base_url('pemesanan/updatePemesanan/') . $data['id_pemesanan']; ?>" method="POST">
                             <!-- Add form fields to edit reservation information -->
                             <div class="mb3">
-                                <input type="hidden" name="id_pemesanan" class="form-control" id="" placeholder=""
-                                    value="<?= $data['id_pemesanan']; ?>" readonly>
+                                <input type="hidden" name="jenis_kamar" class="form-control" id="" placeholder=""
+                                    value="<?= $data['jenis_kamar']; ?>" readonly>
+                                <input type="hidden" name="jumlah_kamar" class="form-control" id="" placeholder=""
+                                    value="<?= $data['jumlah_kamar']; ?>" readonly>
                             </div>
                             <div class="mb3">
                                 <label for="" class="form-label">Status</label>
-                                <select name="status" id="" class="form-control">
-                                    <option value="pending">Pending</option>
-                                    <option value="confirm">Sukses</option>
+                                <select name="status_kamar" id="" class="form-control">
+                                    <option value="0">Pending</option>
+                                    <option value="1">Sukses</option>
                                 </select>
                             </div>
                             <!-- Add more fields as needed -->
@@ -181,76 +202,25 @@
 </div>
 
 
-
-<!-- Modal Tambah Pemesanan -->
-<div class="modal fade" id="tambahPemesananModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Pemesanan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="<?= base_url('pemesanan/tambahPemesanan'); ?>" method="post">
-                    <div class="mb-3">
-                        <label for="nama_tamu" class="form-label">Nama Tamu</label>
-                        <input type="text" name="nama_tamu" class="form-control" id="nama_tamu" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tanggal_check_in" class="form-label">Tanggal Check-in</label>
-                        <input type="date" name="tanggal_check_in" class="form-control" id="tanggal_check_in" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="durasi_pemesanan" class="form-label">Durasi Pemesanan</label>
-                        <input type="text" name="durasi_pemesanan" class="form-control" id="durasi_pemesanan" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tanggal_check_out" class="form-label">Tanggal Check-out</label>
-                        <input type="date" name="tanggal_check_out" class="form-control" id="tanggal_check_out"
-                            required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
-                        <input type="text" name="tipe_kamar" class="form-control" id="tipe_kamar" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                        <input type="number" name="jumlah_orang" class="form-control" id="jumlah_orang" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                        <input type="text" name="harga_kamar" class="form-control" id="harga_kamar" required>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Pesan</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        // Secara awal, tampilkan semua kartu reservasi
-        $('.reservation-card').show();
+    // Event listener untuk input pencarian "Status Pembayaran" dan "Status Kamar"
+    $('#status-pembayaran-input, #status-kamar-input').on('change', function () {
+        var searchStatusPembayaran = $('#status-pembayaran-input').val().toLowerCase();
+        var searchStatusKamar = $('#status-kamar-input').val().toLowerCase();
 
-        // Dengarkan perubahan di dropdown filter status
-        $('#status-filter').on('change', function () {
-            var selectedStatus = $(this).val();
+        // Sembunyikan semua kartu awalnya
+        $('.reservation-card').hide();
 
-            // Sembunyikan semua kartu awalnya
-            $('.reservation-card').hide();
+        // Tampilkan kartu yang cocok dengan teks pencarian "Status Pembayaran" dan "Status Kamar"
+        $('.reservation-card').each(function () {
+            var cardStatusPembayaran = $(this).data('status-pembayaran').toString();
+            var cardStatusKamar = $(this).data('status-kamar').toString();
 
-            if (selectedStatus === 'all') {
-                // Jika 'Semua' dipilih, tampilkan semua kartu
-                $('.reservation-card').show();
-            } else {
-                // Selain itu, tampilkan kartu dengan status yang dipilih
-                $('.' + selectedStatus).show();
+            if ((searchStatusPembayaran === 'all' || cardStatusPembayaran === searchStatusPembayaran) &&
+                (searchStatusKamar === 'all' || cardStatusKamar === searchStatusKamar)) {
+                $(this).show();
             }
         });
     });

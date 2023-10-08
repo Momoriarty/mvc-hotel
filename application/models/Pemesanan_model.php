@@ -50,27 +50,36 @@ class Pemesanan_model extends CI_Model
 		$this->db->where('jenis_kamar', $jenis_kamar);
 		$this->db->update('kamar', ['jumlah_kamar' => $sisa_kamar]);
 
-		
+
 		redirect('beranda/kuitansi/' . $id_pemesanan);
 
 
 	}
 
 
-	public function editPemesanan()
+	public function editPemesanan($id)
 	{
-		$id = $this->input->post('id_pemesanan');
+
+		$jenis_kamar = $this->input->post('jenis_kamar');
+		$jumlah_kamar = $this->input->post('jumlah_kamar');
 
 		// Mengambil data pemesanan berdasarkan ID
 		$data = [
-			'status' => $this->input->post('status')
+			'status_kamar' => $this->input->post('status_kamar')
 		];
-
-
-
 		// Memanggil model untuk melakukan update data pemesanan
+
 		$this->db->where('id_pemesanan', $id);
 		$this->db->update('pemesanan', $data);
+
+		$kamar = $this->db->get_where('kamar', ['jenis_kamar' => $jenis_kamar])->row_array();
+
+		$sisa_kamar = $kamar['jumlah_kamar'] + $jumlah_kamar;
+
+
+		// Perbarui data jumlah kamar dalam tabel 'kamar'
+		$this->db->where('jenis_kamar', $jenis_kamar);
+		$this->db->update('kamar', ['jumlah_kamar' => $sisa_kamar]);
 
 	}
 

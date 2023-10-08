@@ -34,9 +34,9 @@ class Admin extends CI_Controller
         $data['total_pending'] = 0;
 
         foreach ($data['pemesanan'] as $pemesanan) {
-            if ($pemesanan['status'] == 'confirm') {
+            if ($pemesanan['status_bayar'] == '1') {
                 $data['total_terkonfirmasi']++;
-            } elseif ($pemesanan['status'] == 'pending') {
+            } elseif ($pemesanan['status_bayar'] == '0') {
                 $data['total_pending']++;
             }
         }
@@ -68,6 +68,8 @@ class Admin extends CI_Controller
     {
         $data['pemesanan'] = $this->pm->getAllPemesanan();
         $data['user_email'] = $this->db->get('pemesanan')->result_array();
+        $data['data_user'] = $this->db->get('akun')->result_array();
+
 
         $this->load->view('admin/template/navbar-admin', $data);
         $this->load->view('admin/pemesanan');
@@ -82,7 +84,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/user');
         $this->load->view('admin/template/footer-admin');
     }
+    
+    public function transaksi()
+    {
+        $data['user'] = $this->lm->getAllUser();
 
+        $this->load->view('admin/template/navbar-admin', $data);
+        $this->load->view('admin/transaksi');
+        $this->load->view('admin/template/footer-admin');
+    }
 
 
 }
