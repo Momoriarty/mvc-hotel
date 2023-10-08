@@ -97,5 +97,7 @@
                     <?= $kuitansi['total'] ?>
                 </p>
             </div>
+
+            <a href="<?= base_url('beranda/bayar/') . $kuitansi['id_pemesanan'] ?>" class="btn btn-primary">Bayar</a>
         </div>
     </div>

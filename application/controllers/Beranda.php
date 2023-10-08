@@ -113,4 +113,14 @@ class Beranda extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function bayar($id)
+    {
+
+        $data['bayar'] = $this->db->get_where('pemesanan', ['id_pemesanan' => $id])->row_array();
+        $data['is_kamar_active'] = true;
+        $this->load->view('template/navbar', $data);
+        $this->load->view('bayar');
+        $this->load->view('template/footer');
+    }
+
 }

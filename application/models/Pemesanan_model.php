@@ -15,6 +15,7 @@ class Pemesanan_model extends CI_Model
 		$nama = $this->input->post('nama');
 		$email = $this->input->post('email');
 		$no_hp = $this->input->post('no_hp');
+		$tanggal_pesan = date('Y-m-d H:i:s');
 		$tanggal_check_in = $this->input->post('tanggal_check_in');
 		$durasi_pemesanan = $this->input->post('durasi_pemesanan');
 		$tanggal_check_out = $this->input->post('tanggal_check_out');
@@ -24,13 +25,12 @@ class Pemesanan_model extends CI_Model
 
 		$total = $harga_kamar * $durasi_pemesanan * $jumlah_kamar;
 
-
-
 		$data = [
 			'id_pemesanan' => $id_pemesanan,
 			'nama' => $nama,
 			'email' => $email,
 			'no_hp' => $no_hp,
+			'tanggal_pesan' => $tanggal_pesan,
 			'tanggal_check_in' => $tanggal_check_in,
 			'durasi_pemesanan' => $durasi_pemesanan,
 			'tanggal_check_out' => $tanggal_check_out,

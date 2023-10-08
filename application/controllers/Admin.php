@@ -87,7 +87,7 @@ class Admin extends CI_Controller
     
     public function transaksi()
     {
-        $data['user'] = $this->lm->getAllUser();
+        $data['riwayat'] = $this->db->get('riwayat')->result_array();
 
         $this->load->view('admin/template/navbar-admin', $data);
         $this->load->view('admin/transaksi');

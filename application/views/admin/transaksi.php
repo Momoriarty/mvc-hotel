@@ -1,13 +1,13 @@
 <div class="card">
     <div class="card-title card-flex">
         <div class="card-col">
-            <h2>Daftar Transaksi - Cuci Komplit</h2>
+            <h2>Daftar Transaksi</h2>
         </div>
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table tabel-bordered">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th class="sticky">No</th>
@@ -24,45 +24,43 @@
                 </thead>
 
                 <tbody>
-                    <?php if (!empty($riwayat_ck)): ?>
-                        <?php $i = 1; ?>
-                        <?php foreach ($riwayat_ck as $no => $data_ck): ?>
+                    <?php if (!empty($riwayat)): ?>
+                        <?php foreach ($riwayat as $no => $data): ?>
                             <tr>
                                 <td>
-                                    <?= $i ?>
+                                    <?= $no + 1; ?>
                                 </td>
                                 <td>
-                                    <?= $data_ck['or_number'] ?>
+                                    <?= $data['or_number'] ?>
                                 </td>
                                 <td style="max-width: 150px; overflow:hidden;">
-                                    <?= $data_ck['pelanggan'] ?>
+                                    <?= $data['pelanggan'] ?>
                                 </td>
                                 <td>
-                                    <?= $data_ck['j_paket'] ?>
+                                    <?= $data['j_paket'] ?>
                                 </td>
                                 <td>
-                                    <?= $data_ck['berat'] . " Kg" ?>
+                                    <?= $data['berat'] . " Kg" ?>
                                 </td>
                                 <td>
-                                    <?= "Rp. " . $data_ck['total'] ?>
+                                    <?= "Rp. " . $data['total'] ?>
                                 </td>
                                 <td>
-                                    <?= "Rp. " . $data_ck['nominal_byr'] ?>
+                                    <?= "Rp. " . $data['nominal_byr'] ?>
                                 </td>
                                 <td>
-                                    <?= "Rp. " . $data_ck['kembalian'] ?>
+                                    <?= "Rp. " . $data['kembalian'] ?>
                                 </td>
                                 <td><span class="success">
-                                        <?= $data_ck['status'] ?>
+                                        <?= $data['status'] ?>
                                     </span></td>
                                 <td align="center">
-                                    <a href="<?= base_url('riwayat/detail_ck/') . $data_ck['id_ck'] ?>"
+                                    <a href="<?= base_url('riwayat/detail/') . $data['id'] ?>"
                                         class=" btn btn-warning">Detail</a><br />
-                                    <a href="<?= base_url('riwayat/cetak_info_ck/') . $data_ck['id_ck'] ?>"
+                                    <a href="<?= base_url('riwayat/cetak_info/') . $data['id'] ?>"
                                         class="btn btn-danger">Cetak Bukti</a>
                                 </td>
                             </tr>
-                            <?php $i++ ?>
                         <?php endforeach ?>
 
                     <?php else: ?>

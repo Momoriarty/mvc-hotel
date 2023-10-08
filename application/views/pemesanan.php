@@ -151,8 +151,10 @@
                                 <strong>
                                     <?php if ($p['status_bayar'] == '1') { ?>
                                         <p>Sukses</p>
+                                    <?php } elseif ($p['status_bayar'] == '2') { ?>
+                                        <p>Dibatalkan</p>
                                     <?php } else { ?>
-                                        <p>Pending</p>
+                                        <p>pending</p>
                                     <?php } ?>
                                 </strong>
                             </td>
