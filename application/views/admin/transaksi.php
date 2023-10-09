@@ -31,33 +31,48 @@
                                     <?= $no + 1; ?>
                                 </td>
                                 <td>
-                                    <?= $data['or_number'] ?>
+                                    <?= $data['id_transaksi'] ?>
                                 </td>
                                 <td style="max-width: 150px; overflow:hidden;">
-                                    <?= $data['pelanggan'] ?>
+                                    <?= $data['nama'] ?>
                                 </td>
                                 <td>
-                                    <?= $data['j_paket'] ?>
+                                    <?= $data['email'] ?>
                                 </td>
                                 <td>
-                                    <?= $data['berat'] . " Kg" ?>
+                                    <?= $data['no_hp'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['jenis_kamar'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['tanggal_pesan'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['jumlah_kamar'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['tanggal_check_in'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['durasi_pemesanan'] ?>
+                                </td>
+                                <td>
+                                    <?= $data['tanggal_check_out'] ?>
                                 </td>
                                 <td>
                                     <?= "Rp. " . $data['total'] ?>
                                 </td>
                                 <td>
-                                    <?= "Rp. " . $data['nominal_byr'] ?>
+                                    <?= "Rp. " . $data['nominal'] ?>
                                 </td>
                                 <td>
                                     <?= "Rp. " . $data['kembalian'] ?>
                                 </td>
-                                <td><span class="success">
-                                        <?= $data['status'] ?>
-                                    </span></td>
                                 <td align="center">
-                                    <a href="<?= base_url('riwayat/detail/') . $data['id'] ?>"
+                                    <a href="<?= base_url('riwayat/detail/') . $data['id_transaksi'] ?>"
                                         class=" btn btn-warning">Detail</a><br />
-                                    <a href="<?= base_url('riwayat/cetak_info/') . $data['id'] ?>"
+                                    <a href="<?= base_url('riwayat/cetak_info/') . $data['id_transaksi'] ?>"
                                         class="btn btn-danger">Cetak Bukti</a>
                                 </td>
                             </tr>
@@ -65,10 +80,11 @@
 
                     <?php else: ?>
                         <tr>
-                            <td colspan="10" class="txt-center">Data tidak tersedia</td>
+                            <td colspan="14" class="txt-center">Data tidak tersedia</td>
                         </tr>
                     <?php endif ?>
                 </tbody>
+
             </table>
         </div>
     </div>

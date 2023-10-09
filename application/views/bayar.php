@@ -70,17 +70,17 @@
         <h3>Jumlah Rp.<?= $bayar['total'] ?></h3>
         <p>Masukkan nominal untuk melakukan transaksi</p>
     </div>
-    <form action="" method="post">
-        <input type="hidden" name="or_number" value="<?= $bayar['id_pemesanan'] ?>">
-        <input type="hidden" name="pelanggan" value="<?= $bayar['nama'] ?>">
-        <input type="hidden" name="no_telp" value="<?= $bayar['email'] ?>">
-        <input type="hidden" name="alamat" value="<?= $bayar['no_hp'] ?>">
-        <input type="hidden" name="j_paket" value="<?= $bayar['jenis_kamar'] ?>">
-        <input type="hidden" name="berat" value="<?= $bayar['jumlah_kamar'] ?>">
-        <input type="hidden" name="wkt_kerja" value="<?= $bayar['tanggal_pesan'] ?>">
-        <input type="hidden" name="h_perkilo" value="<?= $bayar['tanggal_check_in'] ?>">
-        <input type="hidden" name="tgl_msk" value="<?= $bayar['durasi_pemesanan'] ?>">
-        <input type="hidden" name="tgl_klr" value="<?= $bayar['tanggal_check_out'] ?>">
+    <form action="<?= base_url('transaksi/tambahTransaksi') ?>" method="post">
+        <input type="hidden" name="id_pemesanan" value="<?= $bayar['id_pemesanan'] ?>">
+        <input type="hidden" name="nama" value="<?= $bayar['nama'] ?>">
+        <input type="hidden" name="email" value="<?= $bayar['email'] ?>">
+        <input type="hidden" name="no_hp" value="<?= $bayar['no_hp'] ?>">
+        <input type="hidden" name="jenis_kamar" value="<?= $bayar['jenis_kamar'] ?>">
+        <input type="hidden" name="jumlah_kamar" value="<?= $bayar['jumlah_kamar'] ?>">
+        <input type="hidden" name="tanggal_pesan" value="<?= $bayar['tanggal_pesan'] ?>">
+        <input type="hidden" name="tanggal_check_in" value="<?= $bayar['tanggal_check_in'] ?>">
+        <input type="hidden" name="durasi_pemesanan" value="<?= $bayar['durasi_pemesanan'] ?>">
+        <input type="hidden" name="tanggal_check_out" value="<?= $bayar['tanggal_check_out'] ?>">
         <input type="hidden" name="total" value="<?= $bayar['total'] ?>">
 
         <input type="text" name="nominal" required autofocus autocomplete="off" placeholder="Nominal ex: '120000'">
