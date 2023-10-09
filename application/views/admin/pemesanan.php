@@ -1,58 +1,9 @@
-<style>
-    select {
-        /* Reset Select */
-        appearance: none;
-        outline: 10px red;
-        border: 0;
-        box-shadow: none;
-        /* Personalize */
-        flex: 1;
-        padding: 0 1em;
-        color: #fff;
-        background-color: var(--darkgray);
-        background-image: none;
-        cursor: pointer;
-    }
-
-    /* Remove IE arrow */
-    select::-ms-expand {
-        display: none;
-    }
-
-    /* Custom Select wrapper */
-    .select {
-        position: relative;
-        display: flex;
-        width: 20em;
-        height: 3em;
-        border-radius: .25em;
-        overflow: hidden;
-    }
-
-    /* Arrow */
-    .select::after {
-        content: '\25BC';
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 1em;
-        background-color: #34495e;
-        transition: .25s all ease;
-        pointer-events: none;
-    }
-
-    /* Transition */
-    .select:hover::after {
-        color: #f39c12;
-    }
-</style>
-
 <div class="row">
 
     <div class="col-md-3 mb-3">
         <label for="">Status Pembayaran</label>
         <div class="select">
-            <select id="status-pembayaran-input" name="status-pembayaran-input">
+            <select id="status-pembayaran-input" class="form-control" name="status-pembayaran-input">
                 <option value="all">All</option>
                 <option value="0">Pending</option>
                 <option value="1">Sukses</option>
@@ -63,7 +14,7 @@
     <div class="col-md-3 mb-3">
         <label for="">Status Kamar</label>
         <div class="select">
-            <select id="status-kamar-input" name="status-kamar-input">
+            <select id="status-kamar-input" class="form-control" name="status-kamar-input">
                 <option value="all">All</option>
                 <option value="1">Selesai</option>
                 <option value="0">Digunakan</option>
@@ -74,7 +25,7 @@
     <!-- Kolom Pencarian -->
     <div class="col-md-3 mb-3">
         <label for="search-input">Cari Ap aja</label>
-        <input type="text" id="search-input" class="select" placeholder="Cari nama tamu">
+        <input type="text" id="search-input" class="form-control" placeholder="Cari nama tamu">
     </div>
 </div>
 

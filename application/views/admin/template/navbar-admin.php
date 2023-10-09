@@ -22,6 +22,60 @@
     <link href="<?= base_url('assets/admin/css/sb-admin-2.min.css') ?>" rel="stylesheet">
 
 </head>
+<style>
+    .custom-alert {
+        background: linear-gradient(135deg, #3cd8b7, #2980b9);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        /* Sesuaikan lebar sesuai kebutuhan */
+        text-align: center;
+        /* Tengahkan teks pesan */
+        z-index: 1000;
+        /* Tetapkan z-index yang tinggi */
+        animation: fadeOut 0.5s ease;
+        /* Animasi perubahan opacity saat elemen dihapus */
+    }
+
+    .custom-alert.hide {
+        animation: fadeOut 0.5s ease;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+
+    .custom-alert .text-success {
+        font-weight: bold;
+    }
+
+    .custom-alert.show {
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+            /* Animasi sedikit dari atas ke bawah */
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 
 <body id="page-top">
 
