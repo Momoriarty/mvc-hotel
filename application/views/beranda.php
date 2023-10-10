@@ -146,7 +146,7 @@
                 <div id="row">
                     <div class="col-md-4 team">
                         <div class="thumbnail">
-                            <div class="team-img"><img src="img/team/01.jpg" alt="..."></div>
+                            <div class="team-img"><img src="<?= base_url('assets/img/team/01.jpg')?>" alt="..."></div>
                             <div class="caption">
                                 <h3>Mike Doe</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-md-4 team">
                         <div class="thumbnail">
-                            <div class="team-img"><img src="img/team/02.jpg" alt="..."></div>
+                            <div class="team-img"><img src="<?= base_url('assets/img/team/02.jpg')?>" alt="..."></div>
                             <div class="caption">
                                 <h3>Chris Doe</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec
@@ -168,7 +168,7 @@
                     </div>
                     <div class="col-md-4 team">
                         <div class="thumbnail">
-                            <div class="team-img"><img src="img/team/03.jpg" alt="..."></div>
+                            <div class="team-img"><img src="<?= base_url('assets/img/team/03.jpg')?>" alt="..."></div>
                             <div class="caption">
                                 <h3>Ethan Doe</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec
