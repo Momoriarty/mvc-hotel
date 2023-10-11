@@ -26,7 +26,7 @@ class Fasilitas extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('fasilitas/index');
+        redirect('admin/fasilitas');
     }
 
     public function updateFasilitas($id)
@@ -58,7 +58,7 @@ class Fasilitas extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('fasilitas/index');
+        redirect('admin/fasilitas');
     }
 
     public function deleteFasilitas($id)
@@ -76,6 +76,6 @@ class Fasilitas extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('fasilitas/index');
+        redirect('admin/fasilitas');
     }
 }

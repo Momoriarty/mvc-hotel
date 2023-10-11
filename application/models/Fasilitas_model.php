@@ -21,22 +21,32 @@ class Fasilitas_model extends CI_Model
         $config['upload_path'] = './assets/admin/img/fasilitas';
         $config['max_size'] = '2048';
 
-        // Load library
         $this->load->library('upload', $config);
 
-        // Upload
+        // Upload file
         $this->upload->initialize($config);
 
-        if (!$this->upload->do_upload('gambar_fasilitas')) {
+        if (!$this->upload->do_upload('gambar_kamar')) {
             $data['error'] = $this->upload->display_errors();
             return FALSE;
         } else {
             $upload = $this->upload->data();
 
-            // Get the uploaded file name
-            $gambar_fasilitas = $upload['file_name'];
+            // Membuat nama file baru berdasarkan timestamp
+            $nama_unik = 'img-fasilitas-' . time(); // Contoh: img-kamar-timestamp
 
-            // Combine all data into an array
+            // Mengambil ekstensi file dari nama file asli
+            $ekstensi_file = pathinfo($upload['file_name'], PATHINFO_EXTENSION);
+
+            // Membuat nama file baru dengan ekstensi asli
+            $nama_file_baru = $nama_unik . '.' . $ekstensi_file;
+
+            // Mengganti nama file yang diunggah dengan nama unik
+            rename($config['upload_path'] . '/' . $upload['file_name'], $config['upload_path'] . '/' . $nama_file_baru);
+
+            // Sekarang, variabel $gambar_kamar berisi nama file unik yang dapat Anda gunakan dalam aplikasi Anda.
+
+            $gambar_fasilitas = $nama_file_baru;
 
             $data = [
                 'nama_fasilitas' => $nama_fasilitas,

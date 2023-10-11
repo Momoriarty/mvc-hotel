@@ -36,6 +36,8 @@ class Pemesanan_model extends CI_Model
 			'tanggal_check_out' => $tanggal_check_out,
 			'jenis_kamar' => $jenis_kamar,
 			'jumlah_kamar' => $jumlah_kamar,
+			'status_kamar' => '0',
+			'status_bayar' => '0',
 			'total' => $total,
 		];
 
@@ -55,7 +57,6 @@ class Pemesanan_model extends CI_Model
 
 
 	}
-
 
 	public function editPemesanan($id)
 	{

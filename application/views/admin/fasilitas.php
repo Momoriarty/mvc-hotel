@@ -1,5 +1,3 @@
-
-
 <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Tambah Daftar Fasilitas
 </button>
@@ -119,7 +117,7 @@
                     enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="kategori_fasilitas" class="form-label">Kategori Fasilitas</label>
-                        <select name="kategori_fasilitas" class="form-select" id="kategori_fasilitas">
+                        <select name="kategori_fasilitas" class="form-control" id="kategori_fasilitas">
                             <option value="restoran">RESTAURANT</option>
                             <option value="swimming">SWIMMING POOL</option>
                             <option value="cafe">CAFÉ</option>
@@ -148,4 +146,3 @@
         </div>
     </div>
 </div>
-

@@ -123,7 +123,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="jenis_kamar">Jenis Kamar</label>
-                            <select name="jenis_kamar" id="jenis_kamar" class="form-select">
+                            <select name="jenis_kamar" id="jenis_kamar" class="form-control">
                                 <option value="">Pilih Jenis Kamar</option>
                                 <option value="standard">Standard Room</option>
                                 <option value="superior">Superior Room</option>
@@ -141,7 +141,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="" class="form-label">Gambar Kamar</label>
-                            <input type="file" name="gambar_kamar" class="form-control">
+                            <input type="file" name="gambar_kamar">
                         </div>
                 </div>
                 <div class="modal-footer">

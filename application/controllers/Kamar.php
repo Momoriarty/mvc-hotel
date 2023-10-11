@@ -39,7 +39,7 @@ class Kamar extends CI_Controller
         );
 
         // Arahkan ke halaman..
-        redirect('kamar/index');
+        redirect('kamar');
     }
 
 
@@ -71,7 +71,7 @@ class Kamar extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('kamar/index');
+        redirect('kamar');
     }
 
 
@@ -101,7 +101,7 @@ class Kamar extends CI_Controller
         );
 
         // Redirect ke halaman index atau halaman lain yang sesuai
-        redirect('kamar/index');
+        redirect('kamar');
     }
 
 

@@ -18,7 +18,6 @@ class Kamar_model extends CI_Model
 		$harga_kamar = $this->input->post('harga_kamar');
 
 		$config['allowed_types'] = 'jpg|png|jpeg|pdf|rar|webp';
-		$config['allowed_types'] = 'jpg|png|jpeg|pdf|rar|webp';
 		$config['upload_path'] = './assets/admin/img/kamar';
 		$config['max_size'] = '2048';
 
