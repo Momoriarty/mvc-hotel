@@ -123,4 +123,13 @@ class Beranda extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function riwayat($id)
+    {
+        $data['riwayat'] = $this->db->get_where('riwayat', ['id_pemesanan' => $id])->row_array();
+        $data['is_kamar_active'] = true;
+        $this->load->view('template/navbar', $data);
+        $this->load->view('riwayat');
+        $this->load->view('template/footer');
+    }
+
 }

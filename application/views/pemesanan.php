@@ -159,8 +159,13 @@
                                 </strong>
                             </td>
                             <td>
-                                <a href="<?= base_url('beranda/kuitansi/') . $p['id_pemesanan'] ?>"
-                                    class="btn btn-primary">Cek</a>
+                                <?php if ($p['status_bayar'] == '1') { ?>
+                                    <a href="<?= base_url('beranda/riwayat/') . $p['id_pemesanan'] ?>"
+                                        class="btn btn-primary">Cek</a>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('beranda/kuitansi/') . $p['id_pemesanan'] ?>"
+                                        class="btn btn-primary">Bayar</a>
+                                <?php } ?>
                             </td>
                             <!-- Sisipkan kolom-kolom lainnya sesuai kebutuhan -->
                         </tr>
