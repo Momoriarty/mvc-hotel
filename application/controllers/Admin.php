@@ -94,5 +94,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/template/footer-admin');
     }
 
+    public function profile($id)
+    {
+        $data['user'] = $this->db->get_where('akun', ['id' => $id])->row_array();
+
+        // Kemudian, lanjutkan dengan meload tampilan
+        $data['is_kamar_active'] = true;
+        $this->load->view('admin/template/navbar-admin', $data);
+        $this->load->view('admin/profile');
+        $this->load->view('admin/template/footer-admin');
+    }
 
 }

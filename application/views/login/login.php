@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Poppins:300);
@@ -226,6 +227,59 @@
             transform: translateY(0);
         }
     }
+
+    /* Style the modal body */
+    .modal-body {
+        padding: 20px;
+    }
+
+    /* Style the images */
+    /* Style the modal body */
+    .modal-body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    /* Style the images */
+    .modal-body img {
+        max-width: 26%;
+        /* Ensure images don't exceed the modal width */
+        margin: 10px;
+        /* Add space between images */
+        cursor: pointer;
+        /* Change cursor to a pointer on hover */
+        transition: transform 0.2s;
+        /* Add a smooth hover effect */
+        flex: 0 0 calc(25% - 20px);
+        /* Four images per row, adjust margin accordingly */
+        box-sizing: border-box;
+        /* Include margins in the image size calculation */
+    }
+
+    /* Define the hover effect for images */
+    .modal-body img:hover {
+        transform: scale(1.1);
+        /* Scale the image on hover (makes it slightly larger) */
+    }
+
+    /* Add space at the top of the modal body */
+    .modal-body {
+        padding-top: 10px;
+    }
+
+    /* Adjust the space between images on larger screens */
+    @media (min-width: 768px) {
+        .modal-body img {
+            margin: 15px;
+            /* Increase margin for larger screens */
+        }
+    }
+
+    .img-thumbnail {
+        max-width: 26%;
+    }
 </style>
 
 <body>
@@ -257,6 +311,13 @@
                 <h1>Register</h1>
                 <form action="<?= base_url('login/register') ?>" method="post">
                     <div class="field-wrap">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
+                            Select Image
+                        </button>
+                        <img id="selectedProfileImage" src="" alt="Selected Profile Image" class="img-thumbnail">
+                    </div>
+                    <div class="field-wrap">
                         <input type="text" name="nama_user" required placeholder="Name" />
                     </div>
                     <div class="field-wrap">
@@ -271,13 +332,46 @@
                     <div class="field-wrap">
                         <input type="password" name="password" required placeholder="Password" />
                     </div>
+                    <input type="hidden" id="imageInput" name="selectedImage" />
                     <button type="submit" class="button button-block" />Sign Up</button>
                 </form>
             </div>
 
         </div>
     </div>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Select an Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Here, you can display a list of pre-existing images -->
+                    <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>" alt="Image 1" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>" alt="Image 2" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar4.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar5.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar6.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar7.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar8.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <!-- Add more images as needed -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script>
         // Ambil elemen pesan flash
         var alertElement = document.querySelector('.custom-alert');
@@ -341,6 +435,27 @@
             $(target).fadeIn(600);
 
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Handle image selection
+            $('#imageModal .img-thumbnail').click(function () {
+                var selectedImageUrl = $(this).attr('src');
+                $('#imageInput').val(selectedImageUrl); // Set the image URL in an input field
+                $('#imageModal').modal('hide'); // Close the modal
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Handle image selection
+            $('.modal-body img').click(function () {
+                var selectedImageUrl = $(this).attr('src');
+                $('#selectedProfileImage').attr('src', selectedImageUrl); // Set the selected image URL
+            });
+        });
+
     </script>
 </body>
 
