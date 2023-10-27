@@ -49,6 +49,7 @@ class Login extends CI_Controller
                             'no_hp' => $user['no_hp'],
                             'username' => $user['username'],
                             'password' => $user['password'],
+                            'profile' => $user['profile'],
                             'level' => $user['level']
                         ];
                         $this->session->set_userdata($data);
@@ -61,6 +62,7 @@ class Login extends CI_Controller
                             'no_hp' => $user['no_hp'],
                             'username' => $user['username'],
                             'password' => $user['password'],
+                            'profile' => $user['profile'],
                             'level' => $user['level']
                         ];
                         $this->session->set_userdata($data);
@@ -93,6 +95,7 @@ class Login extends CI_Controller
         $this->session->unset_userdata('nama_user');
         $this->session->unset_userdata('no_hp');
         $this->session->unset_userdata('level');
+        $this->session->unset_userdata('profile');
 
         //arahkan kehalaman login
         redirect('beranda');

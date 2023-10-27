@@ -124,26 +124,43 @@ class Login_model extends CI_Model
 
     public function editProfile($id)
     {
-        // Mengambil data kamar berdasarkan ID
-        $data = [
-            'nama_user' => $this->input->post('nama_user'),
-            'username' => $this->input->post('username'),
-            'level' => $this->input->post('level'),
-            'profile' => $this->input->post('profile')
-        ];
 
-        // Memanggil model untuk melakukan update data
-        $this->db->where('id', $id);
-        $this->db->update('akun', $data);
-
-        // Check the user's level
+        $profile = $this->input->post('profile');
         $level = $this->input->post('level');
 
-        // Redirect based on the user's level
-        if ($level === 'admin') {
-            redirect('admin'); // Redirect to the admin page
+
+        if ($profile == '') {
+            $data = [
+                'nama_user' => $this->input->post('nama_user'),
+                'username' => $this->input->post('username'),
+                'level' => $level,
+            ];
+
+            $this->db->where('id', $id);
+            $this->db->update('akun', $data);
+
+            if ($level === 'admin') {
+                redirect('admin/user');
+            } else {
+                redirect('beranda/profile/' . $id);
+            }
         } else {
-            redirect('beranda/profile/' . $id); // Redirect to the user's profile in the beranda page
+            $data = [
+                'nama_user' => $this->input->post('nama_user'),
+                'username' => $this->input->post('username'),
+                'level' => 'user',
+                'profile' => $profile
+            ];
+
+            $this->db->where('id', $id);
+            $this->db->update('akun', $data);
+
+
+            if ($level === 'admin') {
+                redirect('admin');
+            } else {
+                redirect('beranda/profile/' . $id);
+            }
         }
     }
 

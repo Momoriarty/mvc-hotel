@@ -84,7 +84,7 @@
                 <!-- Tambahkan form untuk mengedit profil di sini -->
                 <form action="<?= base_url('beranda/editnama/') . $user['id']; ?>" method="post">
                     <div class="form-group">
-                        <input type="hidden" class="form-control" name="level" value="<?= $user['level']; ?>" id="">
+                        <input type="text" class="form-control" name="level" value="<?= $user['level']; ?>" id="" readonly>
                     </div>
 
                     <div class="field-wrap">

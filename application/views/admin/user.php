@@ -78,46 +78,14 @@
                                     <form action="<?= base_url('beranda/editnama/') . $data['id']; ?>" method="post">
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <label for="">Profile</label><br>
-                                                <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>"
-                                                    value="avatar1.png" style="max-width:53px;" alt="Image 1"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>"
-                                                    value="avatar2.png" style="max-width:53px;" alt="Image 2"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>"
-                                                    value="avatar3.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar4.png'); ?>"
-                                                    value="avatar4.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar5.png'); ?>"
-                                                    value="avatar5.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar6.png'); ?>"
-                                                    value="avatar6.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar7.png'); ?>"
-                                                    value="avatar7.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-                                                <img src="<?= base_url('assets/img/profile/avatar8.png'); ?>"
-                                                    value="avatar8.png" style="max-width:53px;" alt="Image 3"
-                                                    class="img-thumbnail">
-
-                                                <img id="selectedProfileImage"
-                                                    src="<?= base_url('assets/img/profile/') . $data['profile'] ?>"
-                                                    alt="Selected Profile Image" width="100" class="img-thumbnail">
-                                                <input type="hidden" value="" id="profileInput" name="profile">
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="nama_user">Nama User</label>
                                                 <input type="text" class="form-control" id="nama_user" name="nama_user"
                                                     value="<?= $data['nama_user']; ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email"
-                                                    value="<?= $data['email']; ?>">
+                                                <label for="username">username</label>
+                                                <input type="username" class="form-control" id="username" name="username"
+                                                    value="<?= $data['username']; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="level">Level</label>
