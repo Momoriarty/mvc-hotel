@@ -40,6 +40,8 @@ class Beranda extends CI_Controller
             $data['kamar'][$jenis_kamar][] = $room;
         }
 
+        $data['user'] = $this->db->get('akun')->result_array();
+
         $this->load->view('template/navbar', $data);
         $this->load->view('Beranda');
         $this->load->view('template/footer');

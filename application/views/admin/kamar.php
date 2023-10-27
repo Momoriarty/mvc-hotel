@@ -8,7 +8,7 @@
 
 <div class="row">
 
-    <?php foreach ($kamar as $no => $data): ?>
+    <?php foreach ($kamar as $no => $data) : ?>
         <div class="col-md-3">
             <div class="card mx-auto mt-3">
                 <img src="<?= base_url('assets/admin/img/kamar/' . $data['gambar_kamar']); ?>" class="card-img-top" alt="">
@@ -29,17 +29,14 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-warning" data-bs-toggle="modal"
-                        data-bs-target="#editModal<?= $data['id']; ?>">Edit</button>
-                    <a class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal<?= $data['id']; ?>">Delete</a>
+                    <button type="submit" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal<?= $data['id']; ?>">Edit</button>
+                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $data['id']; ?>">Delete</a>
                 </div>
             </div>
         </div>
 
         <!-- Modal Hapus Kamar -->
-        <div class="modal fade" id="deleteModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="deleteModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -60,8 +57,7 @@
         </div>
 
         <!-- Modal Edit Kamar -->
-        <div class="modal fade" id="editModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="editModal<?= $data['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -69,31 +65,25 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= base_url('kamar/updateKamar/') . $data['id']; ?>" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="<?= base_url('kamar/updateKamar/') . $data['id']; ?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <input type="hidden" name="id" class="form-control" id="" placeholder=""
-                                    value="<?= $data['id']; ?>" readonly>
+                                <input type="hidden" name="id" class="form-control" id="" placeholder="" value="<?= $data['id']; ?>" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="jumlah_kamar" class="">Jumlah Kamar</label>
-                                <input type="text" name="jumlah_kamar" class="form-control" id=""
-                                    placeholder="Jumlah Kamar....." value="<?= $data['jumlah_kamar']; ?>" readonly>
+                                <input type="text" name="jumlah_kamar" class="form-control" id="" placeholder="Jumlah Kamar....." value="<?= $data['jumlah_kamar']; ?>" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="jenis_kamar" class="form-label">Jenis Kamar</label>
-                                <input type="text" name="jenis_kamar" class="form-control" id=""
-                                    value="<?= $data['jenis_kamar']; ?>" required>
+                                <input type="text" name="jenis_kamar" class="form-control" id="" value="<?= $data['jenis_kamar']; ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsi_kamar" class="form-label">Deskripsi Kamar</label>
-                                <input type="text" name="deskripsi_kamar" class="form-control" id=""
-                                    value="<?= $data['deskripsi_kamar']; ?>" required>
+                                <input type="text" name="deskripsi_kamar" class="form-control" id="" value="<?= $data['deskripsi_kamar']; ?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="harga_kamar" class="form-label">Harga Kamar</label>
-                                <input type="text" name="harga_kamar" class="form-control" id=""
-                                    value="<?= $data['harga_kamar']; ?>" required>
+                                <input type="text" name="harga_kamar" class="form-control" id="" value="<?= $data['harga_kamar']; ?>" required>
                             </div>
                             <div class="mb-3">
                                 <a href="<?= base_url('kamar/') ?>" class="btn btn-primary">Batal</a>
@@ -157,7 +147,7 @@
 
     <script>
         // Fungsi untuk mengisi otomatis harga kamar berdasarkan jenis kamar yang dipilih
-        document.getElementById('jenis_kamar').addEventListener('change', function () {
+        document.getElementById('jenis_kamar').addEventListener('change', function() {
             var jenisKamar = this.value;
             var hargaKamarInput = document.getElementById('harga_kamar');
 
@@ -176,7 +166,7 @@
                 case 'suite':
                     hargaKamar = '300000';
                     break;
-                // Tambahkan jenis kamar lainnya di sini
+                    // Tambahkan jenis kamar lainnya di sini
             }
 
             // Isi otomatis harga kamar

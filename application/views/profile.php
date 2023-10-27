@@ -61,8 +61,7 @@
                 <div class="card">
                     <div class="card-body" id="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="rounded-circle"
-                                width="150">
+                            <img src="<?= base_url('assets/img/profile/') . $user['profile'] ?>" alt="" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>
                                     <?= ucwords($user['nama_user']); ?>
@@ -143,15 +142,29 @@
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="id" value="<?= $user['id']; ?>" id="">
                     </div>
+
+                    <div class="field-wrap">
+                        <!-- Here, you can display a list of pre-existing images -->
+                        <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>" value="avatar1.png" style="max-width:65px;" alt="Image 1" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>" value="avatar2.png" style="max-width:65px;" alt="Image 2" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>" value="avatar3.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar4.png'); ?>" value="avatar4.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar5.png'); ?>" value="avatar5.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar6.png'); ?>" value="avatar6.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar7.png'); ?>" value="avatar7.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+                        <img src="<?= base_url('assets/img/profile/avatar8.png'); ?>" value="avatar8.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
+
+                        <img id="selectedProfileImage" src="" alt="Selected Profile Image" class="img-thumbnail">
+                        <input type="hidden" value="" id="profileInput" name="profile">
+                    </div>
+
                     <div class="form-group">
                         <label for="">Full Name</label>
-                        <input type="text" class="form-control" name="nama_user" id=""
-                            value="<?= $user['nama_user']; ?>">
+                        <input type="text" class="form-control" name="nama_user" id="" value="<?= $user['nama_user']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="">Username</label>
-                        <input type="text" class="form-control" name="username" id=""
-                            value="<?= $user['username']; ?>">
+                        <input type="text" class="form-control" name="username" id="" value="<?= $user['username']; ?>">
                     </div>
                     <!-- Tambahkan input lainnya sesuai kebutuhan -->
                     <div class="modal-footer">

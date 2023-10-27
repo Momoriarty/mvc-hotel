@@ -6,11 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webleb</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Poppins:300);
@@ -311,11 +308,11 @@
                 <h1>Register</h1>
                 <form action="<?= base_url('login/register') ?>" method="post">
                     <div class="field-wrap">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                            data-bs-target="#imageModal">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#imageModal">
                             Select Image
                         </button>
                         <img id="selectedProfileImage" src="" alt="Selected Profile Image" class="img-thumbnail">
+                        <input type="hidden" value="" id="profileInput" name="profile">
                     </div>
                     <div class="field-wrap">
                         <input type="text" name="nama_user" required placeholder="Name" />
@@ -349,14 +346,14 @@
                 </div>
                 <div class="modal-body">
                     <!-- Here, you can display a list of pre-existing images -->
-                    <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>" alt="Image 1" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>" alt="Image 2" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>" alt="Image 3" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar4.png'); ?>" alt="Image 3" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar5.png'); ?>" alt="Image 3" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar6.png'); ?>" alt="Image 3" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar7.png'); ?>" alt="Image 3" class="img-thumbnail">
-                    <img src="<?= base_url('assets/img/profile/avatar8.png'); ?>" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>" value="avatar1.png" alt="Image 1" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>" value="avatar2.png" alt="Image 2" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>" value="avatar3.png" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar4.png'); ?>" value="avatar4.png" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar5.png'); ?>" value="avatar5.png" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar6.png'); ?>" value="avatar6.png" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar7.png'); ?>" value="avatar7.png" alt="Image 3" class="img-thumbnail">
+                    <img src="<?= base_url('assets/img/profile/avatar8.png'); ?>" value="avatar8.png" alt="Image 3" class="img-thumbnail">
                     <!-- Add more images as needed -->
                 </div>
                 <div class="modal-footer">
@@ -369,9 +366,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         // Ambil elemen pesan flash
         var alertElement = document.querySelector('.custom-alert');
@@ -380,19 +375,19 @@
         var delay = 5000; // Anda dapat mengganti nilai ini sesuai kebutuhan
 
         // Setelah jangka waktu tertentu, sembunyikan pesan flash dengan animasi
-        setTimeout(function () {
+        setTimeout(function() {
             if (alertElement) {
                 alertElement.style.transition = 'opacity 1s ease';
                 alertElement.style.opacity = '0';
-                setTimeout(function () {
+                setTimeout(function() {
                     alertElement.style.display = 'none';
                 }, 1000); // Waktu tambahan untuk menghapus elemen setelah animasi selesai
             }
         }, delay);
-
     </script>
 
-    <script>$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+    <script>
+        $('.form').find('input, textarea').on('keyup blur focus', function(e) {
 
             var $this = $(this),
                 label = $this.prev('label');
@@ -413,15 +408,14 @@
 
                 if ($this.val() === '') {
                     label.removeClass('highlight');
-                }
-                else if ($this.val() !== '') {
+                } else if ($this.val() !== '') {
                     label.addClass('highlight');
                 }
             }
 
         });
 
-        $('.tab a').on('click', function (e) {
+        $('.tab a').on('click', function(e) {
 
             e.preventDefault();
 
@@ -438,25 +432,29 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Handle image selection
-            $('#imageModal .img-thumbnail').click(function () {
+            $('#imageModal .img-thumbnail').click(function() {
                 var selectedImageUrl = $(this).attr('src');
                 $('#imageInput').val(selectedImageUrl); // Set the image URL in an input field
                 $('#imageModal').modal('hide'); // Close the modal
             });
         });
     </script>
+
     <script>
-        $(document).ready(function () {
-            // Handle image selection
-            $('.modal-body img').click(function () {
+        $(document).ready(function() {
+            // Ketika gambar di modal dipilih
+            $('.modal-body img').click(function() {
                 var selectedImageUrl = $(this).attr('src');
-                $('#selectedProfileImage').attr('src', selectedImageUrl); // Set the selected image URL
+                var selectedTextUrl = $(this).attr('value');
+                $('#selectedProfileImage').attr('src', selectedImageUrl); // Set URL gambar yang terpilih pada gambar yang ditampilkan
+                $('#profileInput').val(selectedTextUrl); // Set URL gambar yang terpilih sebagai nilai input teks dengan ID "profileInput"
             });
         });
-
     </script>
+
+
 </body>
 
 </html>

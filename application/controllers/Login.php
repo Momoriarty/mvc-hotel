@@ -19,16 +19,6 @@ class Login extends CI_Controller
     public function register()
     {
         $this->lm->registerakun();
-
-        // Set pesan sukses untuk ditampilkan kepada pengguna
-        $this->session->set_flashdata(
-            'admin_message',
-            '<div class="alert alert-dismissible fade show alert-custom alert-success mt-3" role="alert">
-            <strong>Sukses!</strong> Data fasilitas berhasil disimpan.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>'
-        );
-
     }
 
     public function login()

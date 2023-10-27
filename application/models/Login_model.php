@@ -15,6 +15,7 @@ class Login_model extends CI_Model
         $pass = $this->input->post('password', true);
         $email = $this->input->post('email', true);
         $no_hp = $this->input->post('no_hp');
+        $profile = $this->input->post('profile');
 
         // Ambil semua data user dari tabel 'akun'
         $datauser = $this->db->get('akun')->result_array();
@@ -66,7 +67,8 @@ class Login_model extends CI_Model
                 'username' => $user,
                 'email' => $email,
                 'no_hp' => $no_hp,
-                'password' => password_hash($pass, PASSWORD_DEFAULT)
+                'profile' => $profile,
+                'password' => password_hash($pass, PASSWORD_DEFAULT),
             ];
             // Eksekusi query insert data ke tabel
             $this->db->insert('akun', $data);
@@ -98,7 +100,8 @@ class Login_model extends CI_Model
         $data = [
             'nama_user' => $this->input->post('nama_user'),
             'username' => $this->input->post('username'),
-            'level' => $this->input->post('level')
+            'level' => $this->input->post('level'),
+            'profile' => $this->input->post('profile')
         ];
 
 
