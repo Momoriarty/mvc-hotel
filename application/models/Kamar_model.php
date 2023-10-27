@@ -85,7 +85,12 @@ class Kamar_model extends CI_Model
 
 	public function hapusKamar($id)
 	{
-		// Menghapus kamar dari database berdasarkan ID kamar
+		$existingData = $this->db->get_where('kamar', ['id' => $id])->row_array();
+
+		if (file_exists('./assets/admin/img/kamar/' . $existingData['gambar_kamar'])) {
+			unlink('./assets/admin/img/kamar/' . $existingData['gambar_kamar']);
+		}
+
 		$this->db->delete('kamar', ['id' => $id]);
 
 

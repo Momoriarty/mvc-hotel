@@ -128,7 +128,6 @@
     </div>
 </div>
 
-<!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,13 +137,11 @@
             <div class="modal-body">
                 <!-- Tambahkan form untuk mengedit profil di sini -->
                 <form action="<?= base_url('beranda/editnama/') . $user['id']; ?>" method="post">
-                    <!-- Contoh input untuk mengedit nama -->
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="id" value="<?= $user['id']; ?>" id="">
                     </div>
 
                     <div class="field-wrap">
-                        <!-- Here, you can display a list of pre-existing images -->
                         <img src="<?= base_url('assets/img/profile/avatar1.png'); ?>" value="avatar1.png" style="max-width:65px;" alt="Image 1" class="img-thumbnail">
                         <img src="<?= base_url('assets/img/profile/avatar2.png'); ?>" value="avatar2.png" style="max-width:65px;" alt="Image 2" class="img-thumbnail">
                         <img src="<?= base_url('assets/img/profile/avatar3.png'); ?>" value="avatar3.png" style="max-width:65px;" alt="Image 3" class="img-thumbnail">
@@ -166,7 +163,6 @@
                         <label for="">Username</label>
                         <input type="text" class="form-control" name="username" id="" value="<?= $user['username']; ?>">
                     </div>
-                    <!-- Tambahkan input lainnya sesuai kebutuhan -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>

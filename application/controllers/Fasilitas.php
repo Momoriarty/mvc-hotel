@@ -7,16 +7,13 @@ class Fasilitas extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Fasilitas_model', 'fm'); // Load Fasilitas_model
-        // You can add login checking here if needed
+        $this->load->model('Fasilitas_model', 'fm'); 
     }
 
     public function tambahFasilitas()
     {
-        // Panggil metode untuk menyimpan fasilitas baru
         $this->fm->simpanFasilitas();
 
-        // Set pesan sukses untuk ditampilkan kepada pengguna
         $this->session->set_flashdata(
             'admin_message',
             '<div class="alert alert-dismissible fade show alert-custom alert-success mt-3" role="alert">
@@ -25,16 +22,13 @@ class Fasilitas extends CI_Controller
         </div>'
         );
 
-        // Redirect ke halaman index atau halaman lain yang sesuai
         redirect('admin/fasilitas');
     }
 
     public function updateFasilitas($id)
     {
-        // Panggil metode untuk mengedit data fasilitas
         $this->fm->editFasilitas($id);
 
-        // Set pesan sukses atau gagal berdasarkan hasil operasi
         if ($this->fm->editFasilitas($id)) {
             $pesan = 'Gagal mengedit data fasilitas.';
             $kelas = 'danger';
@@ -43,7 +37,6 @@ class Fasilitas extends CI_Controller
             $kelas = 'success';
         }
 
-        // Set pesan flash sesuai dengan hasil operasi
         $this->session->set_flashdata(
             'admin_message',
             '<div class="alert alert-dismissible fade show custom-alert alert-' . $kelas . ' mt-3" role="alert">
@@ -57,16 +50,13 @@ class Fasilitas extends CI_Controller
         </div>'
         );
 
-        // Redirect ke halaman index atau halaman lain yang sesuai
         redirect('admin/fasilitas');
     }
 
     public function deleteFasilitas($id)
     {
-        // Hapus data fasilitas
         $this->fm->hapusFasilitas($id);
 
-        // Set pesan sukses
         $this->session->set_flashdata(
             'admin_message',
             '<div class="alert alert-dismissible fade show alert-custom alert-danger mt-3" role="alert">
@@ -75,7 +65,6 @@ class Fasilitas extends CI_Controller
         </div>'
         );
 
-        // Redirect ke halaman index atau halaman lain yang sesuai
         redirect('admin/fasilitas');
     }
 }

@@ -23,28 +23,22 @@ class Fasilitas_model extends CI_Model
 
         $this->load->library('upload', $config);
 
-        // Upload file
         $this->upload->initialize($config);
 
-        if (!$this->upload->do_upload('gambar_kamar')) {
+        if (!$this->upload->do_upload('gambar_fasilitas')) {
             $data['error'] = $this->upload->display_errors();
             return FALSE;
         } else {
             $upload = $this->upload->data();
 
-            // Membuat nama file baru berdasarkan timestamp
-            $nama_unik = 'img-fasilitas-' . time(); // Contoh: img-kamar-timestamp
+            $nama_unik = 'img-fasilitas-' . time();
 
-            // Mengambil ekstensi file dari nama file asli
             $ekstensi_file = pathinfo($upload['file_name'], PATHINFO_EXTENSION);
 
-            // Membuat nama file baru dengan ekstensi asli
             $nama_file_baru = $nama_unik . '.' . $ekstensi_file;
 
-            // Mengganti nama file yang diunggah dengan nama unik
             rename($config['upload_path'] . '/' . $upload['file_name'], $config['upload_path'] . '/' . $nama_file_baru);
 
-            // Sekarang, variabel $gambar_kamar berisi nama file unik yang dapat Anda gunakan dalam aplikasi Anda.
 
             $gambar_fasilitas = $nama_file_baru;
 
@@ -55,8 +49,6 @@ class Fasilitas_model extends CI_Model
                 'gambar_fasilitas' => $gambar_fasilitas
             ];
 
-
-            // Execute the insert query
             $this->db->insert('fasilitas', $data);
         }
     }
@@ -64,21 +56,24 @@ class Fasilitas_model extends CI_Model
     public function editFasilitas($id)
     {
 
-        // Retrieve data from the form
         $data = [
             'nama_fasilitas' => $this->input->post('nama_fasilitas'),
             'deskripsi_fasilitas' => $this->input->post('deskripsi_fasilitas'),
             'kategori_fasilitas' => $this->input->post('kategori_fasilitas'),
         ];
 
-        // Update the facility data in the database
         $this->db->where('id', $id);
-        $this->db->update('fasilitas', $data); // Assuming your table name for facilities is 'fasilitas'
+        $this->db->update('fasilitas', $data);
     }
 
     public function hapusFasilitas($id)
     {
-        // Delete facility from the database based on ID
+        $existingData = $this->db->get_where('fasilitas', ['id' => $id])->row_array();
+
+        if (file_exists('./assets/admin/img/fasilitas/' . $existingData['gambar_fasilitas'])) {
+            unlink('./assets/admin/img/fasilitas/' . $existingData['gambar_fasilitas']);
+        }
+
         $this->db->delete('fasilitas', ['id' => $id]);
     }
 }
