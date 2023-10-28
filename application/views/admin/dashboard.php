@@ -123,24 +123,20 @@
                             aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                            aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                        <!-- Dropdown menu -->
+                        <!-- ... (kode dropdown seperti yang Anda sediakan sebelumnya) -->
                     </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <canvas id="myAreaChart1"></canvas>
                     </div>
                 </div>
             </div>
         </div>
+
+
 
         <!-- Pie Chart -->
         <div class="col-xl-4 col-lg-5">
@@ -331,5 +327,50 @@
 
         </div>
     </div>
-
 </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Data total pendapatan per bulan
+    var totalPendapatanPerBulan = <?php echo json_encode($totalPendapatanPerBulan); ?>;
+
+    // Ekstrak bulan dan total pendapatan
+    var bulan = Object.keys(totalPendapatanPerBulan);
+    var totalPendapatan = Object.values(totalPendapatanPerBulan);
+
+    // Inisialisasi grafik
+    var ctx = document.getElementById("myAreaChart1");
+    var myAreaChart1 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: bulan,
+            datasets: [{
+                label: 'Total Earnings',
+                data: totalPendapatan,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                x: [{
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                        displayFormats: {
+                            month: 'MMM YYYY'
+                        }
+                    }
+                }],
+                y: [{
+                    beginAtZero: true
+                }]
+            }
+        }
+    });
+</script>

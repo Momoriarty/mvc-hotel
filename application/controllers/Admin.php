@@ -12,6 +12,7 @@ class Admin extends CI_Controller
         $this->load->model('Fasilitas_model', 'fm'); //load model Admin
         $this->load->model('Pemesanan_model', 'pm'); //load model Admin
         $this->load->model('Login_model', 'lm'); //load model Admin
+        $this->load->model('Transaksi_model', 'tm'); //load model Admin
         // cek login
         if (!$this->session->userdata('username')) {
             redirect('login');
@@ -40,6 +41,27 @@ class Admin extends CI_Controller
                 $data['total_pending']++;
             }
         }
+
+        $data['transaksi'] = $this->tm->getTransaksiList();
+
+        $totalPendapatanPerBulan = array();
+
+        foreach ($data['transaksi'] as $transaksi) {
+            $tanggalPesan = $transaksi->tanggal_pesan;
+            $total = $transaksi->total;
+
+
+            $bulan = date('Y-m', strtotime($transaksi->tanggal_pesan));
+
+            if (isset($totalPendapatanPerBulan[$bulan])) {
+                $totalPendapatanPerBulan[$bulan] += $total;
+            } else {
+                $totalPendapatanPerBulan[$bulan] = $total;
+            }
+        }
+
+        // Memasukkan data total pendapatan per bulan ke dalam tampilan
+        $data['totalPendapatanPerBulan'] = $totalPendapatanPerBulan;
 
         $this->load->view('admin/template/navbar-admin', $data);
         $this->load->view('admin/dashboard');
@@ -84,7 +106,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/user');
         $this->load->view('admin/template/footer-admin');
     }
-    
+
     public function transaksi()
     {
         $data['riwayat'] = $this->db->get('riwayat')->result_array();

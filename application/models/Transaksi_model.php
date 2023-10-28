@@ -8,6 +8,12 @@ class Transaksi_model extends CI_Model
         return $this->db->get('pemesanan')->result_array();
     }
 
+    public function getTransaksiList()
+    {
+        $query = $this->db->get('riwayat');
+        return $query->result();
+    }
+
     public function simpanTransaksi()
     {
         // New fields for reservation
