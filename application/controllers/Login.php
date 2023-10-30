@@ -100,4 +100,10 @@ class Login extends CI_Controller
         //arahkan kehalaman login
         redirect('beranda');
     }
+
+    public function hapus($id)
+    {
+        $this->lm->delete($id);
+        redirect('admin/user');
+    }
 }

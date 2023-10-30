@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        <a href="<?= base_url('login/delete/' . $data['id']); ?>"
+                                        <a href="<?= base_url('login/hapus/' . $data['id']); ?>"
                                             class="btn btn-danger">Delete</a>
                                     </div>
                                 </div>

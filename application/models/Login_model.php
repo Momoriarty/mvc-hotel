@@ -164,4 +164,9 @@ class Login_model extends CI_Model
         }
     }
 
+    public function delete($id)
+    {
+        $this->db->delete('akun', ['id'=> $id]);
+    }
+
 }

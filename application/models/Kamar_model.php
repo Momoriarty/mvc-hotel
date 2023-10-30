@@ -19,7 +19,7 @@ class Kamar_model extends CI_Model
 
 		$config['allowed_types'] = 'jpg|png|jpeg|pdf|rar|webp';
 		$config['upload_path'] = './assets/admin/img/kamar';
-		$config['max_size'] = '2048';
+		$config['max_size'] = '20480';
 
 		// Memuat library
 		$this->load->library('upload', $config);
